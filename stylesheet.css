@@ -7,7 +7,6 @@
     font-weight: normal;
     font-style: normal;
 }
-
 :root {
     --resin-black: #272635;
     --non-photo-blue: #b1e5f2;
@@ -16,22 +15,50 @@
     --ghost-white: #e8e9f3;
 
 }
-
 ::selection {
     background: var(--non-photo-blue);
 }
-
 * {
     font-family: 'wotfardregular', sans-serif !important;
     background-color: var(--resin-black);
 }
-
+.navlist {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    gap: 20px;
+    padding-right: 40px;
+}
+.navlist li {
+    list-style: none;
+    align-self: center;
+}
+.navlist #name {
+    font-size: 28px;
+    margin-right: auto;
+}
 a {
     text-decoration: none;
     color: var(--ghost-white);
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
 }
 a:hover {
     color: var(--silver);
 }
+#linkedin-icon {
+    margin-left: 40px;
+}
+.icon {
+    transition: transform 0.3s ease-in-out;
+    transform: none;
+}
+.icon:hover {
+    transform: scale(85%);
+}
+
 
 
