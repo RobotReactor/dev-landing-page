@@ -3,28 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/11c8cf7642.js" crossorigin="anonymous"></script>    <link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" />
+    <script src="https://kit.fontawesome.com/11c8cf7642.js" crossorigin="anonymous"></script>   
+     <link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" />
     <title>Maxwell Bourcier: Developer Landing Page</title>
 </head>
 <nav class="navbar">
     <ul class="navlist">
-        <li id="name"><a href="#">Maxwell Bourcier</a></li>
-        <li id="home"><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="./resources/Maxwell Bourcier.pdf" 
-            download="Maxwell Bourcier CV" target="_blank">[ Resume ]</a></li>
-        <a id="linkedin-icon" href="https://www.linkedin.com/in/maxbourcier/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in icon"></i></a>
-        <a id="language-icon"><i class="fa-solid fa-earth-americas icon"></i></a>
-        <a id="language-icon" href="https://github.com/RobotReactor" target="_blank" rel="noopener"><i class="fa-brands fa-github icon"></i></a>
-        <a id="toggle-color-icon"><i class="fa-solid fa-sun icon"></i></a>
+        <div class="nav-name">
+            <li id="name"><a>Maxwell Bourcier</a></li>
+        </div>
+        <div class="nav-anchors">
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="./resources/Maxwell Bourcier.pdf" download="Maxwell Bourcier CV" target="_blank">[ Resume ]</a></li>    
+        </div>
+        <div class="nav-icons">
+            <a id="linkedin-icon" href="https://www.linkedin.com/in/maxbourcier/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in icon"></i></a>
+            <a id="language-icon"><i class="fa-solid fa-earth-americas icon"></i></a>
+            <a id="language-icon" href="https://github.com/RobotReactor" target="_blank" rel="noopener"><i class="fa-brands fa-github icon"></i></a>
+            <a id="toggle-color-icon"><i class="fa-solid fa-sun icon"></i></a>
+        </div>
     </ul>
 </nav>
 <body>
-    <canvas class="background__canvas"></canvas>
+    <canvas class="background__canvas" id="background__canvas"></canvas>
     <div class="main-container">
-        <section class="home">
+        <section class="home" id="home">
             <div class="hero" id="hero">
                 <canvas class="canvas-home"></canvas>   
                 <div class="heading">
@@ -37,7 +43,6 @@
         <section class="about" id="about">
             <div class="about__info">
                 <div class="about-me">About me.</div>
-                
                 <span class="about-container">
                     <div class="left-about">
                         <div id="my-image" class="crop-image"></div>
