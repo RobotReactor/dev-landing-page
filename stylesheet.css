@@ -65,6 +65,10 @@ a:hover {
 .icon:hover {
     transform: scale(90%);
 }
+.main-container {
+    display: flex;
+    flex-direction: column;
+}
 canvas {
     width: 100%;
     height: 1200px;
@@ -76,9 +80,14 @@ canvas {
     display: flex;
     justify-content: center;
 }
-.heading {
+.home {
     color: var(--ghost-white);
     font-family: 'wotfardregular', sans-serif !important;
+    display: flex;
+    justify-content: center;
+    height: 1300px;
+}
+.heading {
     font-size: 56px;
     display: flex;
     flex-direction: column;
@@ -109,7 +118,7 @@ canvas {
     font-size: 24px;
     display: flex;
     justify-content: center;
-    height: auto;
+    height: 1300px;
 }
 .background__canvas {
     position: fixed;
@@ -117,16 +126,17 @@ canvas {
     margin: 0px;
     right: 0px;
     left: 0px;
+    top: 0px;
+    bottom: 0px;
     max-width: 100%;
-    height: 8000px;
+    height: 100%;
+    z-index: -1;
 }
 .about__info {
-    z-index: 1;
     margin-top: 30px;
-    position: absolute;
     display: flex;
     flex-flow: column;
-    width: 900px;
+    width: 400px;
     height: 900px;
     gap: 20px;
     flex: 1;    
@@ -136,8 +146,52 @@ canvas {
     font-size: 48px;
     flex-grow: 2;
 }
+.left-about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.crop-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+    background: #eee no-repeat center;
+    background-size: cover;
+}
+#my-image {
+    background-image: url("./images/my-picture.jpeg");
+    border: 4px solid var(--french-gray);
+}
+.about-container {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin: 40px;
+}
 .about-text {
     align-self: center;
-    flex: 1;
+    flex-grow: 2;
+    flex-shrink: 1;
 }
-
+.about-languages {
+    flex-grow: 1;
+}
+.projects {
+    color: var(--ghost-white);
+    font-family: 'wotfardregular', sans-serif !important;
+    display: flex;
+    justify-content: center;
+    height: 4400px;
+}
+.projects__info {
+    margin-top: 30px;
+    position: absolute;
+}
+.projects-me {
+    align-self: center;
+    font-size: 48px;
+    flex-grow: 2;
+}
