@@ -19,10 +19,10 @@
     background: var(--non-photo-blue);
 }
 * {
-    font-family: 'wotfardregular', sans-serif !important;
     background-color: var(--resin-black);
 }
 .navlist {
+    font-family: 'wotfardregular', sans-serif !important;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -34,6 +34,7 @@
 .navlist li {
     list-style: none;
     align-self: center;
+    justify-content: center;
 }
 .navlist #name {
     font-size: 28px;
@@ -45,6 +46,7 @@ a {
     font-size: 20px;
     display: flex;
     justify-content: center;
+    transition: color 0.3s ease-in-out;
 }
 a:hover {
     color: var(--silver);
@@ -57,7 +59,7 @@ a:hover {
     transform: none;
 }
 .icon:hover {
-    transform: scale(85%);
+    transform: scale(90%);
 }
 
 
