@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'wotfardregular';
+    src: url('./fonts/wotfard-regular-webfont.eot');
+    src: url('./fonts/wotfard-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/wotfard-regular-webfont.woff2') format('woff2'),
+         url('./fonts/wotfard-regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --resin-black: #272635;
+    --non-photo-blue: #b1e5f2;
+    --french-gray: #a6a6a8;
+    --silver: #cecece;
+    --ghost-white: #e8e9f3;
+
+}
+
+::selection {
+    background: var(--non-photo-blue);
+}
+
+* {
+    font-family: 'wotfardregular', sans-serif !important;
+    background-color: var(--resin-black);
+}
+
+a {
+    text-decoration: none;
+    color: var(--ghost-white);
+}
+a:hover {
+    color: var(--silver);
+}
+
+
