@@ -7,6 +7,9 @@
     font-weight: normal;
     font-style: normal;
 }
+html {
+    scroll-behavior: smooth;
+}
 :root {
     --resin-black: #272635;
     --non-photo-blue: #b1e5f2;
@@ -16,7 +19,8 @@
 
 }
 ::selection {
-    background: var(--non-photo-blue);
+    background: var(--silver);
+    color: var(--resin-black);
 }
 * {
     background-color: var(--resin-black);
@@ -61,6 +65,79 @@ a:hover {
 .icon:hover {
     transform: scale(90%);
 }
-
-
+canvas {
+    width: 100%;
+    height: 1200px;
+    z-index: 0;
+    flex: 1;
+    position: relative;
+}
+.hero {
+    display: flex;
+    justify-content: center;
+}
+.heading {
+    color: var(--ghost-white);
+    font-family: 'wotfardregular', sans-serif !important;
+    font-size: 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+    margin-top: 20%;
+}
+.heading__line-2 {
+    font-size: 48px;
+}
+.dev-name {
+    color: var(--non-photo-blue);
+}
+.projects-button {
+    border: 2px solid var(--non-photo-blue);
+    margin-top: 10px;
+    padding: 6px;
+    color: var(--non-photo-blue);
+}
+.down-arrow {
+    align-self: center;
+    margin-left: 4px;
+}
+.about {
+    color: var(--ghost-white);
+    font-family: 'wotfardregular', sans-serif !important;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    height: auto;
+}
+.background__canvas {
+    position: fixed;
+    padding: 0px;
+    margin: 0px;
+    right: 0px;
+    left: 0px;
+    max-width: 100%;
+    height: 8000px;
+}
+.about__info {
+    z-index: 1;
+    margin-top: 30px;
+    position: absolute;
+    display: flex;
+    flex-flow: column;
+    width: 900px;
+    height: 900px;
+    gap: 20px;
+    flex: 1;    
+}
+.about-me {
+    align-self: center;
+    font-size: 48px;
+    flex-grow: 2;
+}
+.about-text {
+    align-self: center;
+    flex: 1;
+}
 
