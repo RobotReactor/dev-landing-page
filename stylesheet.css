@@ -233,12 +233,10 @@ canvas {
 }
 .project-container {
     display: flex;
-    border: 1px solid;
     width: 100%;
     height: 800px;
 }
 .left-box {
-    border: 1px solid blue;
     flex-grow: 1;
     flex-basis: auto;
 }
@@ -253,11 +251,28 @@ canvas {
 }
 .right-box {
     flex-grow: 1;
-    border: 1px solid red;
     flex-basis: auto;
     align-items: center;
     justify-content: center;
 }
 #primary-project-box {
     flex-grow: 2;
+}
+.contact {
+    color: var(--ghost-white);
+    font-family: 'wotfardregular', sans-serif !important;
+    font-size: 24px;
+    height: 800px;
+}
+.contact-me {
+    font-size: 48px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: center;
+}
+.contact-spacer {
+    padding-top: 200px;
+    display: flex;
+    justify-content: center;
 }
