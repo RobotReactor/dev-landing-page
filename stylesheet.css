@@ -16,6 +16,7 @@ html {
     --french-gray: #a6a6a8;
     --silver: #cecece;
     --ghost-white: #e8e9f3;
+    --darker-lighter: #3C3D37;
 }
 ::selection {
     background: var(--silver);
@@ -275,4 +276,51 @@ canvas {
     padding-top: 200px;
     display: flex;
     justify-content: center;
+}
+.contact-container {
+    height: 700px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contact-card {
+    height: 70%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+.form-section {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    width: 500px;
+    font-size: 16px;
+}
+input {
+margin-top: 10px;
+background-color: var(--darker-lighter);
+color: var(--ghost-white);
+}
+
+textarea {
+    margin-top: 10px;
+    background-color: var(--darker-lighter);
+    resize: none;
+    color: var(--ghost-white);
+}
+
+button {
+    width: 80px;
+    height: 60px;
+    border-radius: 15%;
+    margin-top: 30px;
+    background-color: var(--darker-lighter);
+    color: var(--ghost-white);
 }
