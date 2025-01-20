@@ -7,6 +7,9 @@
     font-weight: normal;
     font-style: normal;
 }
+* {
+    border: 1px solid red;
+}
 html {
     scroll-behavior: smooth;
 }
@@ -263,7 +266,9 @@ canvas {
     color: var(--ghost-white);
     font-family: 'wotfardregular', sans-serif !important;
     font-size: 24px;
-    height: 800px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 .contact-me {
     font-size: 48px;
@@ -273,49 +278,42 @@ canvas {
     justify-content: center;
 }
 .contact-spacer {
-    padding-top: 200px;
+    padding-top: 100px;
     display: flex;
     justify-content: center;
 }
-.contact-container {
-    height: 700px;
-    width: 100%;
+.contact-layout {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .contact-card {
-    height: 70%;
+    height: 100%;
     width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-.contact-form {
+    min-width: 200px;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
 }
 .form-section {
     display: flex;
     flex-direction: column;
     padding-top: 20px;
-    width: 500px;
+    min-width: 200px;
+    max-width: 500px;
+    width: 100%;
     font-size: 16px;
+    box-sizing: border-box;
 }
-input {
-margin-top: 10px;
-background-color: var(--darker-lighter);
-color: var(--ghost-white);
-}
-
-textarea {
+textarea, input {
     margin-top: 10px;
     background-color: var(--darker-lighter);
     resize: none;
     color: var(--ghost-white);
+    width: 100%;
 }
-
 button {
     width: 80px;
     height: 60px;
@@ -323,4 +321,8 @@ button {
     margin-top: 30px;
     background-color: var(--darker-lighter);
     color: var(--ghost-white);
+}
+button:hover {
+    background-color: var(--silver);
+    color: var(--resin-black);
 }
