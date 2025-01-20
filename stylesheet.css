@@ -7,9 +7,9 @@
     font-weight: normal;
     font-style: normal;
 }
-* {
+/* * {
     border: 1px solid red;
-}
+} */
 html {
     scroll-behavior: smooth;
 }
