@@ -9,6 +9,15 @@
     <script src="https://kit.fontawesome.com/11c8cf7642.js" crossorigin="anonymous"></script>   
      <link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" />
     <title>Maxwell Bourcier: Developer Landing Page</title>
+    <script>
+        window.onload = function() {
+            window.scrollTo(0, 0);
+
+            if (window.location.hash) {
+                window.location.hash = '';
+            }
+        };
+    </script>
 </head>
 <nav class="navbar">
     <ul class="navlist">
