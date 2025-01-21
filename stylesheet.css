@@ -127,7 +127,7 @@ canvas {
     flex-direction: column;
     align-items: center;
     width: auto;
-    position: absolute;
+    position: sticky;
     z-index: 1;
     margin-top: 20%;
     padding: 10px;
@@ -362,7 +362,6 @@ button:hover {
         display: none;
     }
     .navlist {
-        border: 1px solid red;
         width: 100%;
     }
     .nav-anchors {
@@ -373,6 +372,9 @@ button:hover {
     }
     .nav-icons {
         display: none;
+    }
+    .hero {
+        will-change: transform, top, left;
     }
     .contact-spacer, .about-spacer, .projects-spacer {
         padding-top: 10px;

@@ -9,15 +9,6 @@
     <script src="https://kit.fontawesome.com/11c8cf7642.js" crossorigin="anonymous"></script>   
      <link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" />
     <title>Maxwell Bourcier: Developer Landing Page</title>
-    <script>
-        window.onload = function() {
-            window.scrollTo(0, 0);
-
-            if (window.location.hash) {
-                window.location.hash = '';
-            }
-        };
-    </script>
 </head>
 <nav class="navbar">
     <ul class="navlist">
@@ -129,5 +120,24 @@
             </div>
         </section>
     </div>
+
+    <script>
+        window.onload = function() {
+            window.scrollTo(0, 0);
+
+            if (window.location.hash) {
+                window.location.hash = '';
+            }
+            adjustHeroHeight(); // Call to adjust height on load
+        };
+
+        function adjustHeroHeight() {
+            const hero = document.querySelector('.hero');
+            const vh = window.innerHeight * 0.01;
+            hero.style.height = `${vh * 100}px`; // Set hero height to 100vh with Safari adjustment
+        }
+
+        window.addEventListener('resize', adjustHeroHeight); // Re-adjust on window resize
+    </script>
 </body>
 </html>
