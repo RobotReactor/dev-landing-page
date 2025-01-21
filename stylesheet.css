@@ -7,8 +7,16 @@
     font-weight: normal;
     font-style: normal;
 }
+* {
+    box-sizing: border-box;
+}
 html {
     scroll-behavior: smooth;
+}
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 :root {
     --resin-black: #272635;
@@ -354,12 +362,15 @@ button:hover {
         display: none;
     }
     .navlist {
+        justify-content: center;
         flex-direction: column;
         margin-left: auto;
         margin-right: auto;
     }
     .nav-anchors {
+        justify-content: center;
         font-size: 13px;
+        width: 100%;
     }
     .nav-icons {
         display: none;
