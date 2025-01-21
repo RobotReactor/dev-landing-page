@@ -117,15 +117,20 @@ canvas {
     margin-top: 0;
 }
 .heading {
-    font-size: 56px;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: absolute;
     z-index: 1;
     margin-top: 20%;
+    padding: 10px;
+}
+.heading__line-1 {
+    text-align: center;
+    font-size: 56px;
 }
 .heading__line-2 {
+    text-align: center;
     font-size: 48px;
 }
 .dev-name {
@@ -153,7 +158,7 @@ canvas {
     color: var(--ghost-white);
     font-family: 'wotfardregular', sans-serif !important;
     font-size: 24px;
-    height: 1300px;
+    height: 100%;
 }
 .background__canvas {
     position: fixed;
@@ -163,7 +168,6 @@ canvas {
     height: 100%;
     z-index: -1;
 }
-
 .about-me {
     font-size: 48px;
     padding-top: 40px;
@@ -269,6 +273,7 @@ canvas {
     height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 .contact-me {
     font-size: 48px;
@@ -276,12 +281,16 @@ canvas {
     padding-bottom: 40px;
     display: flex;
     justify-content: center;
+    align-items: center;
+
 }
 .contact-spacer {
     padding-top: 100px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
+
 .contact-layout {
     display: flex;
     align-items: center;
@@ -296,6 +305,8 @@ canvas {
     flex-direction: column;
     padding: 20px;
     box-sizing: border-box;
+    align-items: center;
+    padding-bottom: 60px;
 }
 .form-section {
     display: flex;
@@ -325,4 +336,41 @@ button {
 button:hover {
     background-color: var(--silver);
     color: var(--resin-black);
+}
+@media (min-width: 601px) and (max-width: 900px) { 
+    .about-text {
+        font-size: 20px;
+        width: 100%;
+        padding: 20px;
+    }
+}
+@media (max-width: 600px) { 
+    .contact-spacer, .about-spacer, .projects-spacer {
+        padding-top: 10px;
+    }
+    .contact-me, .about-me, .projects-me {
+        font-size: 30px;
+    }
+    .crop-image, #my-image {
+        width: 125px;
+        height: 125px;
+    }
+    .about-container {
+        flex-direction: column;
+        font-size: 20px;
+    }
+    .about-text {
+        font-size: 15px;
+        width: 100%;
+        padding: 20px;
+    }
+    .heading__line-1 {
+       font-size: 40px; 
+    }
+    .heading__line-2 {
+        font-size: 30px; 
+     }
+     .projects-button {
+        font-size: 15px;
+     }
 }
