@@ -52,7 +52,7 @@ html, body {
     justify-content: space-between;
     background-color: var(--resin-black);
 }
-#name {
+.navlist #name {
     height: 100%;
     font-size: 28px;  
     flex-grow: 1;
@@ -345,7 +345,7 @@ button:hover {
     color: var(--resin-black);
 }
 @media (min-width: 601px) and (max-width: 900px) { 
-    #name {
+    .navlist #name {
         display: none;
     }
     a {
@@ -358,7 +358,7 @@ button:hover {
     }
 }
 @media (max-width: 600px) { 
-    #name {
+    .navlist #name {
         display: none;
     }
     .navlist {
@@ -395,15 +395,15 @@ button:hover {
         padding: 20px;
     }
     .heading {
-        padding-top: 200px;
+        padding-top: 200px !important;
     }
     .heading__line-1 {
-       font-size: 40px; 
+       font-size: 40px !important; 
     }
     .heading__line-2 {
-        font-size: 30px; 
+        font-size: 30px !important; 
      }
      .projects-button {
-        font-size: 15px;
+        font-size: 15px !important;
      }
 }
