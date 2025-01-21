@@ -7,9 +7,6 @@
     font-weight: normal;
     font-style: normal;
 }
-/* * {
-    border: 1px solid red;
-} */
 html {
     scroll-behavior: smooth;
 }
@@ -47,7 +44,7 @@ html {
     justify-content: space-between;
     background-color: var(--resin-black);
 }
-.nav-name #name {
+#name {
     height: 100%;
     font-size: 28px;  
     flex-grow: 1;
@@ -59,6 +56,7 @@ html {
     align-items: center;
     justify-content: right;
     gap: 20px;
+    white-space: nowrap;
     flex-grow: 3;
 }
 .nav-icons {
@@ -120,6 +118,7 @@ canvas {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: auto;
     position: absolute;
     z-index: 1;
     margin-top: 20%;
@@ -338,6 +337,12 @@ button:hover {
     color: var(--resin-black);
 }
 @media (min-width: 601px) and (max-width: 900px) { 
+    #name {
+        display: none;
+    }
+    a {
+        font-size: 20px;
+    }
     .about-text {
         font-size: 20px;
         width: 100%;
@@ -345,6 +350,20 @@ button:hover {
     }
 }
 @media (max-width: 600px) { 
+    #name {
+        display: none;
+    }
+    .navlist {
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .nav-anchors {
+        font-size: 13px;
+    }
+    .nav-icons {
+        display: none;
+    }
     .contact-spacer, .about-spacer, .projects-spacer {
         padding-top: 10px;
     }
@@ -363,6 +382,9 @@ button:hover {
         font-size: 15px;
         width: 100%;
         padding: 20px;
+    }
+    .heading {
+        padding-top: 200px;
     }
     .heading__line-1 {
        font-size: 40px; 
