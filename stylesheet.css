@@ -120,7 +120,8 @@ canvas {
     display: flex;
     justify-content: center;
     height: 1300px;
-    margin-top: 0;
+    padding: 10px;
+    margin-top: 0;    
 }
 .heading {
     display: flex;
@@ -130,7 +131,7 @@ canvas {
     position: sticky;
     z-index: 1;
     margin-top: 20%;
-    padding: 10px;
+    padding-top: 300px;
 }
 .heading__line-1 {
     text-align: center;
@@ -289,7 +290,6 @@ canvas {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 .contact-spacer {
     padding-top: 100px;
@@ -297,17 +297,18 @@ canvas {
     justify-content: center;
     align-items: center;
 }
-
 .contact-layout {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 30px;
+    width: 100%;
 }
 .contact-card {
     height: 100%;
-    width: 40%;
+    width: 100%;
     min-width: 200px;
-    max-width: 500px;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -315,12 +316,14 @@ canvas {
     align-items: center;
     padding-bottom: 60px;
 }
+form {
+    width: 100%;
+}
 .form-section {
     display: flex;
     flex-direction: column;
     padding-top: 20px;
     min-width: 200px;
-    max-width: 500px;
     width: 100%;
     font-size: 16px;
     box-sizing: border-box;
@@ -339,6 +342,7 @@ button {
     margin-top: 30px;
     background-color: var(--darker-lighter);
     color: var(--ghost-white);
+    border: 2px solid var(--ghost-white);
 }
 button:hover {
     background-color: var(--silver);
@@ -356,6 +360,9 @@ button:hover {
         width: 100%;
         padding: 20px;
     }
+    form {
+        width: 50%;
+    }
 }
 @media (max-width: 600px) { 
     .navlist #name {
@@ -363,13 +370,17 @@ button:hover {
     }
     .navlist {
         width: 100%;
+        justify-content: center;
+        padding-left: 0px;
     }
     .nav-anchors {
         font-size: 13px;
-        width: 100%;
+        flex-grow: 0;
         justify-content: center;
-        text-align: center; 
     }
+    /* .nav-anchors a {
+        border: 1px solid red;
+    } */
     .nav-icons {
         display: none;
     }
@@ -399,12 +410,18 @@ button:hover {
         padding-top: 200px !important;
     }
     .heading__line-1 {
-       font-size: 40px !important; 
+       font-size: 30px !important; 
     }
     .heading__line-2 {
-        font-size: 30px !important; 
+        font-size: 20px !important; 
      }
      .projects-button {
-        font-size: 15px !important;
+        font-size: 12px !important;
      }
+     form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+    }
 }
