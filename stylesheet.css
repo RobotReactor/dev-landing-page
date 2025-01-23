@@ -100,6 +100,14 @@ a:hover {
     display: flex;
     flex-direction: column;
 }
+.background__canvas {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
 canvas {
     width: 100%;
     height: 100%;
@@ -168,14 +176,6 @@ canvas {
     font-size: 24px;
     height: 100%;
 }
-.background__canvas {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
 .about-me {
     font-size: 48px;
     padding-top: 40px;
@@ -188,11 +188,94 @@ canvas {
     display: flex;
     justify-content: center;
 }
+.about-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: auto;
+    gap: 40px;
+    margin: 40px;
+}
 .left-about {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+}
+.about-text {
+    align-self: center;
+    flex-shrink: 1;
+    padding-left: 120px;
+    padding-right: 120px;
+    padding-top: 40px;
+}
+.right-about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px; 
+    min-width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    position: relative;
+    overflow: visible;
+    padding-right: 100px;
+}
+
+.right-about i:nth-child(1) { transform: translate(calc(150px * cos(0deg)), calc(150px * sin(0deg))); }
+.right-about i:nth-child(2) { transform: translate(calc(150px * cos(36deg)), calc(150px * sin(36deg))); }
+.right-about i:nth-child(3) { transform: translate(calc(150px * cos(72deg)), calc(150px * sin(72deg))); }
+.right-about i:nth-child(4) { transform: translate(calc(150px * cos(108deg)), calc(150px * sin(108deg))); }
+.right-about i:nth-child(5) { transform: translate(calc(150px * cos(144deg)), calc(150px * sin(144deg))); }
+.right-about i:nth-child(6) { transform: translate(calc(150px * cos(180deg)), calc(150px * sin(180deg))); }
+.right-about i:nth-child(7) { transform: translate(calc(150px * cos(216deg)), calc(150px * sin(216deg))); }
+.right-about i:nth-child(8) { transform: translate(calc(150px * cos(252deg)), calc(150px * sin(252deg))); }
+.right-about i:nth-child(9) { transform: translate(calc(150px * cos(288deg)), calc(150px * sin(288deg))); }
+.right-about i:nth-child(10) { transform: translate(calc(150px * cos(324deg)), calc(150px * sin(324deg))); }
+
+.right-about {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: visible;
+}
+.right-about i {
+    position: absolute;
+    font-size: 40px;
+    color: var(--non-photo-blue);
+    transition: transform 0.5s ease, color 0.3s ease;
+    z-index: 1;     
+    top: 50%;
+    left: 50%;
+}
+.right-about i.centered {
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(0%, 0%);
+    color: var(--silver); 
+}
+.language-text {
+    position: absolute;
+    top: 65%; 
+    left: 60%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 16px;
+}
+.language-text.fade-in {
+    opacity: 1;
+}
+.language-text.fade-out {
+    opacity: 0;
 }
 .crop-image {
     width: 250px;
@@ -203,23 +286,8 @@ canvas {
 }
 #my-image {
     background-image: url("./images/my-picture.jpeg");
-    border: 4px solid var(--french-gray);
-}
-.about-container {
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    margin: 40px;
-}
-.about-text {
-    align-self: center;
-    flex-grow: 2;
-    flex-shrink: 1;
-    padding-left: 120px;
-    padding-right: 120px;
-    padding-top: 40px;
+    border: 4px solid var(--ghost-white);
+
 }
 .about-languages {
     flex-grow: 1;
@@ -308,7 +376,7 @@ canvas {
     height: 100%;
     width: 100%;
     min-width: 200px;
-    max-width: 800px;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -378,9 +446,6 @@ button:hover {
         flex-grow: 0;
         justify-content: center;
     }
-    /* .nav-anchors a {
-        border: 1px solid red;
-    } */
     .nav-icons {
         display: none;
     }
@@ -406,6 +471,18 @@ button:hover {
         width: 100%;
         padding: 20px;
     }
+    .right-about {
+        width: 200px;
+        height: 200px;
+    }
+    .right-about i:nth-child(1) { transform: translate(0, -70px); }
+    .right-about i:nth-child(2) { transform: translate(50px, -50px); }
+    .right-about i:nth-child(3) { transform: translate(70px, 0); }
+    .right-about i:nth-child(4) { transform: translate(50px, 50px); }
+    .right-about i:nth-child(5) { transform: translate(0, 70px); }
+    .right-about i:nth-child(6) { transform: translate(-50px, 50px); }
+    .right-about i:nth-child(7) { transform: translate(-70px, 0); }
+    .right-about i:nth-child(8) { transform: translate(-50px, -50px); }
     .heading {
         padding-top: 200px !important;
     }

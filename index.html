@@ -52,18 +52,20 @@
                         <div id="my-image" class="crop-image"></div>
                         <div class="about-text">Hi, I'm Maxwell Bourcier! I'm a passionate software developer who thrives on turning ideas into functional, elegant solutions. Coding isn't just a skill for me; it's a journey of endless learning and problem-solving. From the thrill of debugging to the joy of creating something from scratch, I embrace every challenge as an opportunity to grow. I'm constantly exploring new technologies, improving my craft, and staying curious about what's next. When I'm not coding or playind disc golf, you'll find me brainstorming innovative projects or diving into online courses to expand my knowledge. Let's build something amazing together!</div>
                     </div>
-                    <div class="right-about">
-                        <i class="devicon-python-plain"></i>
-                        <i class="devicon-dot-net-plain"></i>
-                        <i class="devicon-java-plain"></i>
-                        <i class="devicon-csharp-plain"></i>
-                        <i class="devicon-blazor-original"></i>
-                        <i class="devicon-azuresqldatabase-plain"></i>
-                        <i class="devicon-amazonwebservices-plain-wordmark"></i>
-                        <i class="devicon-azure-plain"></i>
-                        <i class="devicon-csharp-plain"></i>
-                        <i class="devicon-javascript-plain"></i>   
-                        <i class="devicon-git-plain"></i>
+                    <div class="right-about-container">
+                        <div class="right-about">
+                            <i class="devicon-python-plain" data-language="Python"></i>
+                            <i class="devicon-dot-net-plain" data-language=".NET"></i>
+                            <i class="devicon-java-plain" data-language="Java"></i>
+                            <i class="devicon-csharp-plain" data-language="C#"></i>
+                            <i class="devicon-blazor-original" data-language="Blazor"></i>
+                            <i class="devicon-azuresqldatabase-plain" data-language="Azure SQL"></i>
+                            <i class="devicon-amazonwebservices-plain-wordmark" data-language="AWS"></i>
+                            <i class="devicon-azure-plain" data-language="Azure"></i>
+                            <i class="devicon-javascript-plain" data-language="JavaScript"></i>
+                            <i class="devicon-git-plain" data-language="Git"></i>
+                            <div class="language-text"></div>
+                        </div>
                     </div>
                 </span>
         </section>
@@ -135,22 +137,67 @@
     </div>
 
     <script>
+        const icons = document.querySelectorAll('.right-about i');
+        const languageText = document.querySelector('.language-text');
+        let animationInProgress = false;
+
+        icons.forEach((icon) => {
+            icon.addEventListener('click', () => {
+                if (animationInProgress) return;
+
+                icons.forEach((icon) => icon.classList.remove('centered'));
+
+                icon.classList.add('centered');
+
+                const newLanguage = icon.getAttribute('data-language');
+
+                if (languageText.textContent === newLanguage) return; 
+                languageText.classList.remove('fade-in');
+                languageText.classList.add('fade-out');
+
+                animationInProgress = true;
+
+                setTimeout(() => {
+                    languageText.textContent = newLanguage;
+
+                    languageText.classList.remove('fade-out');
+                    languageText.classList.add('fade-in');
+
+                    animationInProgress = false;
+                }, 300);
+            });
+        });
+
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.right-about i')) {
+        icons.forEach((icon) => icon.classList.remove('centered'));
+
+        languageText.classList.remove('fade-in');
+        languageText.classList.add('fade-out');
+
+        setTimeout(() => {
+            languageText.textContent = '';
+            languageText.classList.remove('fade-out');
+        }, 300);
+    }
+});
+
         window.onload = function() {
             window.scrollTo(0, 0);
 
             if (window.location.hash) {
                 window.location.hash = '';
             }
-            adjustHeroHeight(); // Call to adjust height on load
+            adjustHeroHeight();
         };
 
         function adjustHeroHeight() {
             const hero = document.querySelector('.hero');
             const vh = window.innerHeight * 0.01;
-            hero.style.height = `${vh * 100}px`; // Set hero height to 100vh with Safari adjustment
+            hero.style.height = `${vh * 100}px`;
         }
 
-        window.addEventListener('resize', adjustHeroHeight); // Re-adjust on window resize
+        window.addEventListener('resize', adjustHeroHeight);
     </script>
 </body>
 </html>
