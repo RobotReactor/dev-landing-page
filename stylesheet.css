@@ -8,6 +8,7 @@
     font-style: normal;
 }
 * {
+    /*border: solid; */
     box-sizing: border-box;
 }
 html {
@@ -464,25 +465,66 @@ button:hover {
     }
     .about-container {
         flex-direction: column;
-        font-size: 20px;
     }
     .about-text {
         font-size: 15px;
         width: 100%;
         padding: 20px;
     }
+    .right-about-container {
+        width: 200px;
+        min-width: 200px;
+        height: 200px;
+    }
+    .right-about i:nth-child(1) { transform: translate(calc(100px * cos(0deg)), calc(100px * sin(0deg))); }
+    .right-about i:nth-child(2) { transform: translate(calc(100px * cos(36deg)), calc(100px * sin(36deg))); }
+    .right-about i:nth-child(3) { transform: translate(calc(100px * cos(72deg)), calc(100px * sin(72deg))); }
+    .right-about i:nth-child(4) { transform: translate(calc(100px * cos(108deg)), calc(100px * sin(108deg))); }
+    .right-about i:nth-child(5) { transform: translate(calc(100px * cos(144deg)), calc(100px * sin(144deg))); }
+    .right-about i:nth-child(6) { transform: translate(calc(100px * cos(180deg)), calc(100px * sin(180deg))); }
+    .right-about i:nth-child(7) { transform: translate(calc(100px * cos(216deg)), calc(100px * sin(216deg))); }
+    .right-about i:nth-child(8) { transform: translate(calc(100px * cos(252deg)), calc(100px * sin(252deg))); }
+    .right-about i:nth-child(9) { transform: translate(calc(100px * cos(288deg)), calc(100px * sin(288deg))); }
+    .right-about i:nth-child(10) { transform: translate(calc(100px * cos(324deg)), calc(100px * sin(324deg))); }
+
     .right-about {
+        position: absolute;
+        left: -8%;
         width: 200px;
         height: 200px;
     }
-    .right-about i:nth-child(1) { transform: translate(0, -70px); }
-    .right-about i:nth-child(2) { transform: translate(50px, -50px); }
-    .right-about i:nth-child(3) { transform: translate(70px, 0); }
-    .right-about i:nth-child(4) { transform: translate(50px, 50px); }
-    .right-about i:nth-child(5) { transform: translate(0, 70px); }
-    .right-about i:nth-child(6) { transform: translate(-50px, 50px); }
-    .right-about i:nth-child(7) { transform: translate(-70px, 0); }
-    .right-about i:nth-child(8) { transform: translate(-50px, -50px); }
+    .right-about i{
+        position: absolute;
+        font-size: 20px;
+        color: var(--non-photo-blue);
+        transition: transform 0.5s ease, color 0.3s ease;
+        z-index: 1;     
+        top: 50%;
+        left: 50%;
+    }
+    .right-about i.centered {
+        z-index: 10;
+        top: 50%;
+        left: 50%;
+        transform: translate(0%, 0%);
+        color: var(--silver); 
+    }
+    .language-text {
+        position: absolute;
+        top: 65%; 
+        left: 56%;
+        transform: translateX(-50%);
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        font-size: 10px;
+    }
+    .language-text.fade-in {
+        opacity: 1;
+    }
+    .language-text.fade-out {
+        opacity: 0;
+    }
     .heading {
         padding-top: 200px !important;
     }
