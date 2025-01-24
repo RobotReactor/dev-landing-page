@@ -21,6 +21,7 @@ html, body {
 }
 :root {
     --resin-black: #272635;
+    --lighter-resin-black: #4C5660;
     --non-photo-blue: #b1e5f2;
     --french-gray: #a6a6a8;
     --silver: #cecece;
@@ -101,23 +102,14 @@ a:hover {
     display: flex;
     flex-direction: column;
 }
-.background__canvas {
+#background__canvas {
     position: fixed;
     left: 0px;
     top: 0px;
     width: 100%;
     height: 100%;
     z-index: -1;
-}
-canvas {
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    left: 0px;
-    z-index: 0;
-    flex: 1;
-    position: absolute;
-    background-color: var(--resin-black);
+    background: radial-gradient(var(--lighter-resin-black), var(--resin-black));
 }
 .hero {
     display: flex;
@@ -415,6 +407,11 @@ button {
 button:hover {
     background-color: var(--silver);
     color: var(--resin-black);
+}
+@media (min-width: 901px) { 
+    .right-about {
+        margin-right: 100px;
+    }
 }
 @media (min-width: 601px) and (max-width: 900px) { 
     .navlist #name {
