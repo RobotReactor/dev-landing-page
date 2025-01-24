@@ -68,13 +68,12 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let particlesArray;
-// let size = Math.random() * 5 + 1;
 
 let mouse = {
     x: null,
     y: null,
-    radius: (canvas.height/120) * (canvas.width/120)
-}
+    radius: Math.min(100, Math.max(30, (canvas.height / 100) * (canvas.width / 100))),
+};
 
 window.addEventListener('mousemove',
     function(event) {
@@ -95,15 +94,22 @@ class Particle {
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-        ctx.fillStyle = 'rgb(0, 0, 0)';
+        ctx.fillStyle = 'rgb(232, 233, 243)';
         ctx.fill();
     }
     update() {
-        if (this.x > canvas.width || this.x < 0) {
+        if (this.x > canvas.width - this.size || this.x < this.size) {
             this.directionX = -this.directionX;
         }
-        if (this.y > canvas.height || this.y < 0) {
+        if (this.y > canvas.height - this.size || this.y < this.size) {
             this.directionY = -this.directionY;
+        }
+
+        if (this.x < 0 || this.x > canvas.width) {
+            this.x = Math.random() * canvas.width;
+        }
+        if (this.y < 0 || this.y > canvas.height) {
+            this.y = Math.random() * canvas.height;
         }
 
         let dx = mouse.x - this.x;
@@ -126,17 +132,22 @@ class Particle {
     }
 }
 
-
 function init() {
+
     particlesArray = [];
-    let numberOfParticles = (canvas.height * canvas.width) / 16000;
-    for (let i = 0; i < numberOfParticles; i++) {
+    
+    let baseDensity = (canvas.height * canvas.width) / 16000;
+    let adjustedDensity = baseDensity * (innerWidth < 768 ? 2 : 1);
+
+    for (let i = 0; i < adjustedDensity; i++) {
         let size = (Math.random() * 3) + 1;
         let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
         let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-        let directionX = (Math.random() * 5) - 2.5;
-        let directionY = (Math.random() * 5) - 2.5;
-        let color = 'rgb(0, 0, 0)';
+
+        let directionX = (Math.random() * 1 - 0.5) * (innerWidth < 768 ? 0.3 : 0.5);
+        let directionY = (Math.random() * 1 - 0.5) * (innerWidth < 768 ? 0.3 : 0.5);
+
+        let color = 'rgb(232, 233, 243)';
 
         particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
     }
@@ -153,16 +164,21 @@ function animate() {
 }
 
 function connect() {
+    let maxConnectionDistance = Math.min(canvas.width, canvas.height) / 7;
+
+    if (innerWidth < 768) {
+        maxConnectionDistance *= 1.5;
+    }
+
     let opacityValue = 1;
+
     for (let a = 0; a < particlesArray.length; a++) {
         for (let b = a; b < particlesArray.length; b++) {
-            let distance = ((particlesArray[a].x - particlesArray[b].x) 
-            * (particlesArray[a].x - particlesArray[b].x))
-            + ((particlesArray[a].y - particlesArray[b].y) 
-            * (particlesArray[a].y -  particlesArray[b].y));
-            if(distance < (canvas.width/7) * (canvas.height/7)) {
-                opacityValue = 1 - (distance/20000);
-                ctx.strokeStyle='rgb(0, 0, 0,' + opacityValue + ')';
+            let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2) +
+                           ((particlesArray[a].y - particlesArray[b].y) ** 2);
+            if (distance < maxConnectionDistance ** 2) {
+                opacityValue = 1 - (distance / (maxConnectionDistance ** 2)); // Scale fade based on distance
+                ctx.strokeStyle = `rgba(232, 233, 243, ${opacityValue})`;
                 ctx.lineWidth = 1;
                 ctx.beginPath();
                 ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -173,14 +189,13 @@ function connect() {
     }
 }
 
-window.addEventListener('resize',
-    function(){
+window.addEventListener('resize', 
+    function () {
         canvas.width = innerWidth;
         canvas.height = innerHeight;
-        mouse.radius = ((canvas.height/120) * (canvas.height/120));
+        mouse.radius = Math.min(100, Math.max(30, (canvas.height / 100) * (canvas.width / 100))); // Recalculate radius
         init();
-    }
-);
+});
 
 window.addEventListener('mouseout',
     function() {
