@@ -68,6 +68,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let particlesArray;
+let resizeTimeout;
 
 let mouse = {
     x: null,
@@ -189,13 +190,62 @@ function connect() {
     }
 }
 
-window.addEventListener('resize', 
-    function () {
-        canvas.width = innerWidth;
-        canvas.height = innerHeight;
+window.addEventListener('resize', () => {
+    // Update canvas dimensions
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+
+    clearTimeout(resizeTimeout);
+
+    // Delay particle adjustment to avoid excessive calculations during continuous resizing
+    resizeTimeout = setTimeout(() => {
         mouse.radius = Math.min(100, Math.max(30, (canvas.height / 100) * (canvas.width / 100))); // Recalculate radius
-        init();
+
+        // Adjust particle count to match new canvas size
+        adjustParticleCount();
+
+        // Refresh particle positions if any are out of bounds
+        refreshParticles();
+    }, 300);
 });
+
+function adjustParticleCount() {
+    const newArea = canvas.width * canvas.height;
+    const baseDensity = newArea / 16000;
+    const adjustedDensity = baseDensity * (innerWidth < 768 ? 2 : 1);
+
+    if (particlesArray.length < adjustedDensity) {
+        // Add more particles
+        const particlesToAdd = Math.floor(adjustedDensity - particlesArray.length);
+        for (let i = 0; i < particlesToAdd; i++) {
+            let size = (Math.random() * 3) + 1;
+            let x = Math.random() * canvas.width;
+            let y = Math.random() * canvas.height;
+
+            let directionX = (Math.random() * 1 - 0.5) * (innerWidth < 768 ? 0.3 : 0.5);
+            let directionY = (Math.random() * 1 - 0.5) * (innerWidth < 768 ? 0.3 : 0.5);
+
+            let color = 'rgb(232, 233, 243)';
+            particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+        }
+    } else if (particlesArray.length > adjustedDensity) {
+        // Remove excess particles
+        const particlesToRemove = particlesArray.length - Math.floor(adjustedDensity);
+        particlesArray.splice(-particlesToRemove, particlesToRemove);
+    }
+
+    previousArea = newArea; // Update the stored canvas area
+}
+
+function refreshParticles() {
+    particlesArray.forEach((particle) => {
+        // Reposition particles that are out of bounds
+        if (particle.x < 0 || particle.x > canvas.width || particle.y < 0 || particle.y > canvas.height) {
+            particle.x = Math.random() * canvas.width;
+            particle.y = Math.random() * canvas.height;
+        }
+    });
+}
 
 window.addEventListener('mouseout',
     function() {
