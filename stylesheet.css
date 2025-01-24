@@ -20,6 +20,7 @@ html, body {
     padding: 0;
 }
 :root {
+    --icon-size: 40px;
     --resin-black: #272635;
     --lighter-resin-black: #4C5660;
     --non-photo-blue: #b1e5f2;
@@ -185,79 +186,74 @@ a:hover {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    flex: auto;
-    gap: 40px;
-    margin: 40px;
+    margin-bottom: 300px;
+    max-width: 2200px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .left-about {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 100px;
+    max-width: 1200px;
+    margin: 100px;
 }
 .about-text {
     align-self: center;
-    flex-shrink: 1;
-    padding-left: 120px;
-    padding-right: 120px;
-    padding-top: 40px;
+    flex-grow: 1;
 }
 .right-about-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-grow: 1;
     justify-content: center;
-    width: 300px; 
-    min-width: 300px;
-    height: 300px;
-    margin: 0 auto;
+    align-items: center;
+    min-width: 500px;
+    width: 100%;
+    height: 100%;
+  }
+  .right-about {
     position: relative;
-    overflow: visible;
-    padding-right: 100px;
-}
-
-.right-about i:nth-child(1) { transform: translate(calc(150px * cos(0deg)), calc(150px * sin(0deg))); }
-.right-about i:nth-child(2) { transform: translate(calc(150px * cos(36deg)), calc(150px * sin(36deg))); }
-.right-about i:nth-child(3) { transform: translate(calc(150px * cos(72deg)), calc(150px * sin(72deg))); }
-.right-about i:nth-child(4) { transform: translate(calc(150px * cos(108deg)), calc(150px * sin(108deg))); }
-.right-about i:nth-child(5) { transform: translate(calc(150px * cos(144deg)), calc(150px * sin(144deg))); }
-.right-about i:nth-child(6) { transform: translate(calc(150px * cos(180deg)), calc(150px * sin(180deg))); }
-.right-about i:nth-child(7) { transform: translate(calc(150px * cos(216deg)), calc(150px * sin(216deg))); }
-.right-about i:nth-child(8) { transform: translate(calc(150px * cos(252deg)), calc(150px * sin(252deg))); }
-.right-about i:nth-child(9) { transform: translate(calc(150px * cos(288deg)), calc(150px * sin(288deg))); }
-.right-about i:nth-child(10) { transform: translate(calc(150px * cos(324deg)), calc(150px * sin(324deg))); }
-
-.right-about {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%; 
+  }
+.circle {
     position: relative;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
-    overflow: visible;
+    transform-origin: 50% 50%;
+    transition: transform 0.5s ease;
 }
-.right-about i {
+.lang-icon {
     position: absolute;
-    font-size: 40px;
+    font-size: var(--icon-size);
+    width: var(--icon-size);
+    height: var(--icon-size);
     color: var(--non-photo-blue);
     transition: transform 0.5s ease, color 0.3s ease;
-    z-index: 1;     
-    top: 50%;
-    left: 50%;
+    transform: rotate(var(--angle)) translate(0, calc(-500% - var(--icon-size) / 2)) rotate(calc(-1 * var(--angle)));
+    transform-origin: center center;
 }
-.right-about i.centered {
-    z-index: 10;
-    top: 50%;
-    left: 50%;
-    transform: translate(0%, 0%);
-    color: var(--silver); 
+.lang-icon.centered {
+    position: absolute;
+    top: 50% - calc(var(--icon-size) / 2);
+    left: 50% - calc(var(--icon-size) / 2);
+    transform: translate(0% - calc(var(--icon-size) / 2), 0%);
+    transform-origin: center center;
+    color: var(--silver);
 }
 .language-text {
     position: absolute;
-    top: 68%; 
-    left: 61%;
-    transform: translateX(-50%);
+    top: 60%;
     text-align: center;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -279,7 +275,6 @@ a:hover {
 #my-image {
     background-image: url("./images/my-picture.jpeg");
     border: 4px solid var(--ghost-white);
-
 }
 .about-languages {
     flex-grow: 1;
@@ -408,12 +403,8 @@ button:hover {
     background-color: var(--silver);
     color: var(--resin-black);
 }
-@media (min-width: 901px) { 
-    .right-about {
-        margin-right: 100px;
-    }
-}
-@media (min-width: 601px) and (max-width: 900px) { 
+
+@media (min-width: 601px) and (max-width: 1200px) { 
     .navlist #name {
         display: none;
     }
@@ -425,27 +416,12 @@ button:hover {
     }
     .about-container {
         flex-direction: column;
+        padding-right: 0px;
     }
     .about-text {
         font-size: 20px;
         width: 100%;
         padding: 20px;
-    }
-    .right-about {
-        position: absolute;
-        left: -5%;
-        width: 300px;
-        height: 300px;
-    }
-    .language-text {
-        position: absolute;
-        top: 67%; 
-        left: 57%;
-        transform: translateX(-50%);
-        text-align: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        font-size: 16px;
     }
     .language-text.fade-in {
         opacity: 1;
@@ -484,70 +460,33 @@ button:hover {
         font-size: 30px;
     }
     .crop-image, #my-image {
-        width: 125px;
-        height: 125px;
+        width: 200px;
+        height: 200px;
+        aspect-ratio: 1 / 1;
     }
     .about-container {
         flex-direction: column;
+        padding-right: 0px;
+    }
+    .left-about {
+        margin: 0px;
+        gap: 0px;
+    }
+    .right-about-container {
+        margin-top: -50px;
     }
     .about-text {
         font-size: 15px;
         width: 100%;
         padding: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
-    .right-about-container {
-        width: 200px;
-        min-width: 200px;
-        height: 200px;
-    }
-    .right-about i:nth-child(1) { transform: translate(calc(100px * cos(0deg)), calc(100px * sin(0deg))); }
-    .right-about i:nth-child(2) { transform: translate(calc(100px * cos(36deg)), calc(100px * sin(36deg))); }
-    .right-about i:nth-child(3) { transform: translate(calc(100px * cos(72deg)), calc(100px * sin(72deg))); }
-    .right-about i:nth-child(4) { transform: translate(calc(100px * cos(108deg)), calc(100px * sin(108deg))); }
-    .right-about i:nth-child(5) { transform: translate(calc(100px * cos(144deg)), calc(100px * sin(144deg))); }
-    .right-about i:nth-child(6) { transform: translate(calc(100px * cos(180deg)), calc(100px * sin(180deg))); }
-    .right-about i:nth-child(7) { transform: translate(calc(100px * cos(216deg)), calc(100px * sin(216deg))); }
-    .right-about i:nth-child(8) { transform: translate(calc(100px * cos(252deg)), calc(100px * sin(252deg))); }
-    .right-about i:nth-child(9) { transform: translate(calc(100px * cos(288deg)), calc(100px * sin(288deg))); }
-    .right-about i:nth-child(10) { transform: translate(calc(100px * cos(324deg)), calc(100px * sin(324deg))); }
-
-    .right-about {
-        position: absolute;
-        left: -8%;
-        width: 200px;
-        height: 200px;
-    }
-    .right-about i{
-        position: absolute;
-        font-size: 20px;
-        color: var(--non-photo-blue);
-        transition: transform 0.5s ease, color 0.3s ease;
-        z-index: 1;     
-        top: 50%;
-        left: 50%;
-    }
-    .right-about i.centered {
-        z-index: 10;
-        top: 50%;
-        left: 50%;
-        transform: translate(0%, 0%);
-        color: var(--silver); 
+    .lang-icon {
+        transform: rotate(var(--angle)) translate(0, calc(-250% - var(--icon-size) / 2)) rotate(calc(-1 * var(--angle)));
     }
     .language-text {
-        position: absolute;
-        top: 65%; 
-        left: 56%;
-        transform: translateX(-50%);
-        text-align: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        font-size: 10px;
-    }
-    .language-text.fade-in {
-        opacity: 1;
-    }
-    .language-text.fade-out {
-        opacity: 0;
+        top: 57%;
     }
     .heading {
         margin-top: 0px;
