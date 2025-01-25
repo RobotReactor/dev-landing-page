@@ -72,9 +72,8 @@ html, body {
     max-width: 1000px;
 }
 .nav-icons {
-    position: absolute; /* Absolute positioning */
-    top: 0; /* Ensure it's positioned at the top */
-    right: 0; /* Align to the right */
+    position: absolute;
+    top: 0;
     opacity: 1;
     pointer-events: all;
     flex-direction: row;
@@ -84,7 +83,6 @@ html, body {
     margin-right: 10px;
     gap: 10px;
 }
-
 .navlist a {
     color: var(--ghost-white);
     text-decoration: none;
@@ -104,31 +102,29 @@ a:hover {
     transform: scale(90%);
 }
 .hamburger {
-    display: none; /* Hidden by default */
+    display: none;
     flex-direction: column;
     cursor: pointer;
-    width: 17px;
-    height: 14px;
+    width: 20px;
+    height: 16px;
     justify-content: space-between;
     margin-right: 20px;
 }
-/* Style for individual bars */
+
 .hamburger .bar {
-    height: 2px;
+    height: 2.3px;
     background-color: var(--ghost-white);
     transition: all 1s ease-in-out;
 }
-/* Active state - move bars to the center and rotate */
 .hamburger.active .bar:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
+    transform: translateY(7px) rotate(45deg);
 }
 .hamburger.active .bar:nth-child(2) {
-    opacity: 0; /* Hide the middle bar */
+    opacity: 0;
 }
 .hamburger.active .bar:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
+    transform: translateY(-7px) rotate(-45deg);
 }
-/* Inactive state - default position */
 .hamburger.inactive .bar:nth-child(1) {
     transform: translateY(0) rotate(0);
 }
@@ -295,6 +291,7 @@ a:hover {
 }
 .lang-icon {
     position: absolute;
+    cursor: pointer;
     font-size: var(--icon-size);
     width: var(--icon-size);
     height: var(--icon-size);
@@ -309,6 +306,9 @@ a:hover {
     left: 50% - calc(var(--icon-size) / 2);
     transform: translate(0% - calc(var(--icon-size) / 2), 0%);
     transform-origin: center center;
+    color: var(--silver);
+}
+.lang-icon:hover {
     color: var(--silver);
 }
 .language-text {
@@ -517,7 +517,7 @@ button:hover {
         top: 125%;
         left: 40%;
         width: 100%;
-        font-size: 16px;
+        font-size: 20px;
         display: flex;
         flex-direction: column;
         justify-content: center;
