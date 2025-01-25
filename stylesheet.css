@@ -69,6 +69,7 @@ html, body {
     gap: 20px;
     white-space: nowrap;
     flex-grow: 3;
+    max-width: 1000px;
 }
 .nav-icons {
     height: 100%;
@@ -98,6 +99,18 @@ a:hover {
 }
 .icon:hover {
     transform: scale(90%);
+}
+.fade-text {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 .main-container {
     display: flex;
@@ -200,9 +213,18 @@ a:hover {
     max-width: 1200px;
     margin: 100px;
 }
+.about-text-wrapper {
+    width: 100%;
+    min-height: 500px;
+    max-height: 500px;
+    overflow: hidden;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: justify;
+}
 .about-text {
-    align-self: center;
-    flex-grow: 1;
+    margin: 0;
+    font-size: 1.2rem;
 }
 .right-about-container {
     display: flex;
@@ -418,10 +440,12 @@ button:hover {
         flex-direction: column;
         padding-right: 0px;
     }
+    .about-text-wrapper {
+        min-height: 400px;
+        max-height: 400px;
+    }
     .about-text {
-        font-size: 20px;
-        width: 100%;
-        padding: 20px;
+        font-size: 1.1rem;
     }
     .language-text.fade-in {
         opacity: 1;
@@ -440,15 +464,15 @@ button:hover {
     .navlist {
         width: 100%;
         justify-content: center;
-        padding-left: 0px;
+        align-items: center;
     }
     .nav-anchors {
-        font-size: 13px;
-        flex-grow: 0;
+        font-size: 10px;
         justify-content: center;
     }
     .nav-icons {
-        display: none;
+        flex-grow: 1;
+        font-size: 8px;
     }
     .hero {
         will-change: transform, top, left;
@@ -475,12 +499,12 @@ button:hover {
     .right-about-container {
         margin-top: -50px;
     }
+    .about-text-wrapper {
+        min-height: 300px;
+        max-height: 360px;
+    }
     .about-text {
-        font-size: 15px;
-        width: 100%;
-        padding: 20px;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        font-size: 1rem;
     }
     .lang-icon {
         transform: rotate(var(--angle)) translate(0, calc(-250% - var(--icon-size) / 2)) rotate(calc(-1 * var(--angle)));

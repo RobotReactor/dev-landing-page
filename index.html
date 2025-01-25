@@ -16,7 +16,7 @@
         <div class="nav-name">
             <li id="name"><a>Software Engineer</a></li>
         </div>
-        <div class="nav-anchors">
+        <div class="fade-text nav-anchors">
             <li><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -37,19 +37,24 @@
         <section class="home" id="home">
             <div class="hero" id="hero">
                 <div class="heading">
-                    <div class="heading__line-1">Hello, I'm <span class="dev-name">Maxwell</span>.</div>
-                    <div class="heading__line-2">A full stack developer.</div>
-                    <a class="projects-button" href="#projects">View my work <i class="fa-solid fa-arrow-down down-arrow"></i></a>
+                    <div class="fade-text heading__line-1">Hello, I'm <span class="dev-name">Maxwell</span>.</div>
+                    <div class="fade-text heading__line-2">A full stack developer.</div>
+                    <a class="projects-button" href="#projects">
+                        <span class="fade-text button-text">View my work</span>
+                        <i class="fa-solid fa-arrow-down down-arrow"></i>
+                    </a>
                 </div>
             </div>
         </section>
         <section class="about title-separators" id="about">
-                <div class="about-me">About me.</div>
+                <div class="fade-text about-me">About me.</div>
                 <div class="about-spacer"></div>
                 <span class="about-container">
                     <div class="left-about">
                         <div id="my-image" class="crop-image"></div>
-                        <div class="about-text">Hi, I'm Maxwell Bourcier! I'm a passionate software developer who thrives on turning ideas into functional, elegant solutions. Coding isn't just a skill for me; it's a journey of endless learning and problem-solving. From the thrill of debugging to the joy of creating something from scratch, I embrace every challenge as an opportunity to grow. I'm constantly exploring new technologies, improving my craft, and staying curious about what's next. When I'm not coding or playind disc golf, you'll find me brainstorming innovative projects or diving into online courses to expand my knowledge. Let's build something amazing together!</div>
+                        <div class="about-text-wrapper">
+                            <div class="fade-text about-text">Hi, I'm Maxwell Bourcier! I'm a passionate software developer who thrives on turning ideas into functional, elegant solutions. Coding isn't just a skill for me; it's a journey of endless learning and problem-solving. From the thrill of debugging to the joy of creating something from scratch, I embrace every challenge as an opportunity to grow. I'm constantly exploring new technologies, improving my craft, and staying curious about what's next. When I'm not coding or playind disc golf, you'll find me brainstorming innovative projects or diving into online courses to expand my knowledge. Let's build something amazing together!</div>
+                        </div>
                     </div>
                     <div class="right-about-container">
                         <div class="right-about">
@@ -71,7 +76,7 @@
                 </span>
         </section>
         <section class="projects title-separators" id="projects">
-            <div class="projects-me">Projects.</div>
+            <div class="fade-text projects-me">Projects.</div>
             <div class="projects-spacer"></div>
             <div class="projects-layout">
                 <div class="project-container">
@@ -113,24 +118,24 @@
             </div>
         </section>
         <section class="contact title-separators" id="contact">
-            <div class="contact-me">Contact me.</div>
+            <div class="fade-text contact-me">Contact me.</div>
             <div class="contact-spacer"></div>
             <div class="contact-layout">
                 <div class="contact-card">
                     <form action="https://formspree.io/f/mdkkvovw" method="POST">
                         <div class="form-section">
-                            <label for="name">Name:</label>
+                            <label class="fade-text" id="#text-fade" for="name">Name:</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-section">
-                            <label for="email">Email:</label>
+                            <label class="fade-text" for="email">Email:</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-section"> 
-                            <label for="message">Message:</label>
+                            <label class="fade-text" for="message">Message:</label>
                             <textarea id="message" name="message" rows="5" required></textarea>
                         </div>   
-                        <button type="submit">Send</button>
+                        <button type="submit"><div class="fade-text"><p id="send-button">Send</p></div></button>
                     </form>
                 </div>
             </div>
