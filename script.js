@@ -4,6 +4,8 @@ document.getElementById('hamburger').addEventListener('click', function() {
     
     // Get the nav-icons element
     const navIcons = document.getElementById('nav-icons');
+    const navAnchors = document.getElementById('nav-anchors');
+    const homeSpacer = document.getElementById('home-spacer');
 
     // Toggle fade effect on nav-icons
     if (navIcons.classList.contains('fade-in')) {
@@ -13,14 +15,28 @@ document.getElementById('hamburger').addEventListener('click', function() {
         navIcons.classList.remove('fade-out');
         navIcons.classList.add('fade-in');
     }
+    if (navAnchors.classList.contains('fade-in-ham')) {
+        navAnchors.classList.remove('fade-in-ham');
+        navAnchors.classList.add('fade-out-ham');
+    } else {
+        navAnchors.classList.remove('fade-out-ham');
+        navAnchors.classList.add('fade-in-ham');
+    }
+    if (homeSpacer.classList.contains('extended')) {
+        homeSpacer.classList.remove('extended');
+    } else {
+        homeSpacer.classList.add('extended');
+    }
 });
 
 window.addEventListener('resize', () => {
     if (window.innerWidth > 600) {
-        navIcons.classList.add('fade-in'); // Ensure icons are always visible on larger screens
-        navIcons.style.pointerEvents = 'auto'; // Ensure clickable
+        navIcons.classList.add('fade-in'); 
+        navAnchors.classList.add('fade-in'); 
+        navAnchors.style.pointerEvents = 'auto';
     } else {
-        navIcons.style.pointerEvents = 'none'; // Disable clicks on smaller screens
+        navIcons.style.pointerEvents = 'none';
+        navAnchors.style.pointerEvents = 'none';
     }
 });
 
@@ -37,13 +53,11 @@ function toggleLanguage() {
     const currentLanguage = body.getAttribute('lang');
     const fadeElements = document.querySelectorAll('.fade-text');
 
-    // Start fade-out transition
     fadeElements.forEach(element => {
         element.classList.remove('fade-in');
         element.classList.add('fade-out');
     });
 
-    // Wait for fade-out to complete before changing language (adjust timing as necessary)
     setTimeout(() => {
         if (currentLanguage === 'es') {
             body.setAttribute('lang', 'en');
@@ -53,15 +67,14 @@ function toggleLanguage() {
             updateContentToSpanish();
         }
 
-        // After content change, start fade-in transition
         setTimeout(() => {
             fadeElements.forEach(element => {
                 element.classList.remove('fade-out');
                 element.classList.add('fade-in');
             });
             textTransitionInProgress = false;
-        }, 300); // Delay fade-in until after content update
-    }, 700); // Adjust this timeout to match your fade-out duration
+        }, 300);
+    }, 700);
 }
 
 function updateContentToSpanish() {
@@ -70,7 +83,7 @@ function updateContentToSpanish() {
         document.querySelector('a[href="#about"]').textContent = "Sobre mí";
         document.querySelector('a[href="#projects"]').textContent = "Proyectos";
         document.querySelector('a[href="#contact"]').textContent = "Contáctame";
-        document.querySelector('a[href="./resources/Maxwell Bourcier.pdf"]').textContent = "[ Currículum ]";
+        document.querySelector('a[href="./resources/Maxwell Bourcier.pdf"]').innerHTML = "[ Currículum <i style='font-size: 12px; justify-content: center;' class='fa-solid fa-download'></i> ]";
         document.querySelector('.about-me').textContent = "Sobre mí";
         document.querySelector('.projects-me').textContent = "Proyectos";
         document.querySelector('.contact-me').textContent = "Contáctame";
@@ -82,7 +95,10 @@ function updateContentToSpanish() {
         document.querySelector('label[for="email"]').textContent = "Correo electrónico:";
         document.querySelector('label[for="message"]').textContent = "Mensaje:";
         document.querySelector('p[id="send-button"]').textContent = "Enviar";
-    }, 300); // Slight delay to ensure content change happens after fade-out
+        document.querySelector('p[id="send-button"]').textContent = "Enviar";
+        document.querySelector('.footer-legal-1').textContent = "© 2025 MvxCoding. Todos los derechos reservados.";
+        document.querySelector('.footer-legal-2').textContent = "El nombre y logo registrados son propiedad de MvxCoding, Inc.";
+    }, 300);
 }
 
 function updateContentToEnglish() {
@@ -91,7 +107,7 @@ function updateContentToEnglish() {
         document.querySelector('a[href="#about"]').textContent = "About";
         document.querySelector('a[href="#projects"]').textContent = "Projects";
         document.querySelector('a[href="#contact"]').textContent = "Contact";
-        document.querySelector('a[href="./resources/Maxwell Bourcier.pdf"]').textContent = "[ Resume ]";
+        document.querySelector('a[href="./resources/Maxwell Bourcier.pdf"]').innerHTML = "[ Resume <i style='font-size: 12px; justify-content: center;' class='fa-solid fa-download'></i> ]";
         document.querySelector('.about-me').textContent = "About me.";
         document.querySelector('.projects-me').textContent = "Projects";
         document.querySelector('.contact-me').textContent = "Contact me";
@@ -103,7 +119,9 @@ function updateContentToEnglish() {
         document.querySelector('label[for="email"]').textContent = "Email:";
         document.querySelector('label[for="message"]').textContent = "Message:";
         document.querySelector('p[id="send-button"]').textContent = "Send";
-    }, 300); // Slight delay to ensure content change happens after fade-out
+        document.querySelector('.footer-legal-1').textContent = "© 2025 MvxCoding. All rights reserved.";
+        document.querySelector('.footer-legal-2').textContent = "Trademarked name and logo are the property of MvxCoding, Inc.";
+    }, 300);
 }
 
 function toggleDarkMode() {
