@@ -89,12 +89,11 @@ function updateContentToSpanish() {
         document.querySelector('.contact-me').textContent = "Contáctame";
         document.querySelector('.heading__line-1').innerHTML = "Hola, soy <span class='dev-name'>Maxwell</span>.";
         document.querySelector('.heading__line-2').textContent = "Un desarrollador full stack.";
-        document.querySelector('.button-text').textContent = "Ver mi trabajo";
+        document.querySelector('.button-text').textContent = "Comencemos";
         document.querySelector('.about-text').textContent = "¡Hola, soy Maxwell Bourcier! Soy un desarrollador de software apasionado que disfruta convertir ideas en soluciones funcionales y elegantes. La programación no es solo una habilidad para mí, ¡es un viaje de aprendizaje y resolución de problemas sin fin! Desde la emoción de depurar hasta la alegría de crear algo desde cero, abrazo cada desafío como una oportunidad para crecer. Siempre estoy explorando nuevas tecnologías, mejorando mi oficio y manteniéndome curioso acerca de lo que sigue. Cuando no estoy programando o jugando al disc golf, me encontrarás ideando proyectos innovadores o tomando cursos en línea para expandir mis conocimientos. ¡Construyamos algo increíble juntos!";
         document.querySelector('label[for="name"]').textContent = "Nombre:";
         document.querySelector('label[for="email"]').textContent = "Correo electrónico:";
         document.querySelector('label[for="message"]').textContent = "Mensaje:";
-        document.querySelector('p[id="send-button"]').textContent = "Enviar";
         document.querySelector('p[id="send-button"]').textContent = "Enviar";
         document.querySelector('.footer-legal-1').textContent = "© 2025 MvxCoding. Todos los derechos reservados.";
         document.querySelector('.footer-legal-2').textContent = "El nombre y logo registrados son propiedad de MvxCoding, Inc.";
@@ -113,7 +112,7 @@ function updateContentToEnglish() {
         document.querySelector('.contact-me').textContent = "Contact me";
         document.querySelector('.heading__line-1').innerHTML = "Hello, I'm <span class='dev-name'>Maxwell</span>.";
         document.querySelector('.heading__line-2').textContent = "A full stack developer.";
-        document.querySelector('.button-text').textContent = "View my work";
+        document.querySelector('.button-text').textContent = "Let's get started";
         document.querySelector('.about-text').textContent = "Hi, I'm Maxwell Bourcier! I'm a passionate software developer who thrives on turning ideas into functional, elegant solutions. Coding isn't just a skill for me; it's a journey of endless learning and problem-solving. From the thrill of debugging to the joy of creating something from scratch, I embrace every challenge as an opportunity to grow. I'm constantly exploring new technologies, improving my craft, and staying curious about what's next. When I'm not coding or playing disc golf, you'll find me brainstorming innovative projects or diving into online courses to expand my knowledge. Let's build something amazing together!";
         document.querySelector('label[for="name"]').textContent = "Name:";
         document.querySelector('label[for="email"]').textContent = "Email:";
@@ -139,6 +138,7 @@ function toggleDarkMode() {
 
 const icons = document.querySelectorAll('.right-about i');
 const languageText = document.querySelector('.language-text');
+const imageTint = document.querySelector('.image-tint');
 
 let animationInProgress = false;
 
@@ -149,6 +149,8 @@ icons.forEach((icon) => {
         icons.forEach((icon) => icon.classList.remove('centered'));
 
         icon.classList.add('centered');
+
+        imageTint.classList.add('tint-on');
 
         const newLanguage = icon.getAttribute('data-language');
 
@@ -175,6 +177,8 @@ document.addEventListener('click', (e) => {
 
         languageText.classList.remove('fade-in');
         languageText.classList.add('fade-out');
+        imageTint.classList.remove('tint-on');
+
 
         setTimeout(() => {
             languageText.textContent = '';
