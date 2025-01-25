@@ -72,14 +72,19 @@ html, body {
     max-width: 1000px;
 }
 .nav-icons {
-    height: 100%;
+    position: absolute; /* Absolute positioning */
+    top: 0; /* Ensure it's positioned at the top */
+    right: 0; /* Align to the right */
+    opacity: 1;
+    pointer-events: all;
     flex-direction: row;
     align-items: center;
-    display: flex;
-    gap: 10px;
     justify-content: center;
-    flex-grow: 1;
+    width: auto;
+    margin-right: 10px;
+    gap: 10px;
 }
+
 .navlist a {
     color: var(--ghost-white);
     text-decoration: none;
@@ -90,15 +95,48 @@ html, body {
 a:hover {
     color: var(--silver);
 }
-#linkedin-icon {
-    margin-left: 40px;
-}
 .icon {
     transition: transform 0.3s ease-in-out;
     transform: none;
+    cursor: pointer;
 }
 .icon:hover {
     transform: scale(90%);
+}
+.hamburger {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    cursor: pointer;
+    width: 17px;
+    height: 14px;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+/* Style for individual bars */
+.hamburger .bar {
+    height: 2px;
+    background-color: var(--ghost-white);
+    transition: all 1s ease-in-out;
+}
+/* Active state - move bars to the center and rotate */
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0; /* Hide the middle bar */
+}
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+/* Inactive state - default position */
+.hamburger.inactive .bar:nth-child(1) {
+    transform: translateY(0) rotate(0);
+}
+.hamburger.inactive .bar:nth-child(2) {
+    opacity: 1;
+}
+.hamburger.inactive .bar:nth-child(3) {
+    transform: translateY(0) rotate(0);
 }
 .fade-text {
     transition: opacity 0.5s ease-in-out;
@@ -430,8 +468,13 @@ button:hover {
     .navlist #name {
         display: none;
     }
-    a {
-        font-size: 20px;
+    .nav-icons {
+        width: auto; /* Set it to auto for proper scaling */
+        max-width: 100%; /* Prevent it from going over the screen width */
+        position: relative; /* Ensure stability */
+    }
+    .nav-anchors {
+        font-size: 14px;
     }
     .heading {
         margin-top: 24dvh;
@@ -458,21 +501,38 @@ button:hover {
     }
 }
 @media (max-width: 600px) { 
-    .navlist #name {
+    .navbar #name {
         display: none;
     }
     .navlist {
-        width: 100%;
-        justify-content: center;
-        align-items: center;
+        background: none;
     }
     .nav-anchors {
-        font-size: 10px;
-        justify-content: center;
+        display: none;
     }
     .nav-icons {
-        flex-grow: 1;
-        font-size: 8px;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        position: absolute;
+        top: 125%;
+        left: 40%;
+        width: 100%;
+        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        pointer-events: none;
+    }
+    .nav-icons.fade-in {
+        opacity: 1;
+        pointer-events: all;
+    }
+    .nav-icons.fade-out {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+    .hamburger {
+        display: flex;
     }
     .hero {
         will-change: transform, top, left;
@@ -500,11 +560,12 @@ button:hover {
         margin-top: -50px;
     }
     .about-text-wrapper {
-        min-height: 300px;
-        max-height: 360px;
+        min-height: 400px;
+        max-height: 400px;
     }
     .about-text {
         font-size: 1rem;
+        margin: 20px;
     }
     .lang-icon {
         transform: rotate(var(--angle)) translate(0, calc(-250% - var(--icon-size) / 2)) rotate(calc(-1 * var(--angle)));
@@ -530,5 +591,20 @@ button:hover {
         flex-direction: column;
         align-items: center;
         width: 50%;
+    }
+}
+@media (min-width: 601px) {
+    .nav-icons {
+        display: flex;
+        position: static;
+        opacity: 1;
+        pointer-events: auto;
+        z-index: auto;
+    }
+    .hamburger {
+        display: none;
+    }
+    #linkedin-icon {
+        margin-left: 40px;
     }
 }

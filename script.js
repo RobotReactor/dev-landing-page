@@ -1,3 +1,29 @@
+document.getElementById('hamburger').addEventListener('click', function() {
+    // Toggle hamburger menu active state
+    this.classList.toggle('active');
+    
+    // Get the nav-icons element
+    const navIcons = document.getElementById('nav-icons');
+
+    // Toggle fade effect on nav-icons
+    if (navIcons.classList.contains('fade-in')) {
+        navIcons.classList.remove('fade-in');
+        navIcons.classList.add('fade-out');
+    } else {
+        navIcons.classList.remove('fade-out');
+        navIcons.classList.add('fade-in');
+    }
+});
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 600) {
+        navIcons.classList.add('fade-in'); // Ensure icons are always visible on larger screens
+        navIcons.style.pointerEvents = 'auto'; // Ensure clickable
+    } else {
+        navIcons.style.pointerEvents = 'none'; // Disable clicks on smaller screens
+    }
+});
+
 document.getElementById('language-icon').addEventListener('click', toggleLanguage);
 document.getElementById('toggle-color-icon').addEventListener('click', toggleDarkMode);
 
