@@ -10,49 +10,40 @@
 * {
     box-sizing: border-box;
 }
-html {
-    scroll-behavior: smooth;
-}
 html, body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
-}
-body {
+    scroll-behavior: smooth;
     font-family: 'wotfardregular', sans-serif !important;
     color: var(--ghost-white); 
-    transition: color .5s ease-in-out;
 }
-body.dark-mode {
+body.light-mode {
     color: var(--resin-black);
     transition: color .5s ease-in-out;
 }
-body.dark-mode ::selection {
+body.light-mode ::selection {
     background-color: var(--resin-black);
     color: var(--silver);
 }
-body.dark-mode .navlist{
-    transition: background-color .5s ease-in-out;
-    background-color: var(--ghost-white);
-}
-body.dark-mode textarea {
+body.light-mode textarea {
     transition: background-color .5s ease-in-out, color .5s ease-in-out, border .5s ease-in-out; 
     border: 1px solid var(--resin-black);
     background-color: var(--ghost-white);
     color: var(--resin-black);
 }
-body.dark-mode input {
+body.light-mode input {
     transition: background-color .5s ease-in-out, color .5s ease-in-out, border .5s ease-in-out; 
     border: 1px solid var(--resin-black);
     background-color: var(--ghost-white);
     color: var(--resin-black);
 }
-body.dark-mode button:hover {
+body.light-mode button:hover {
     background-color: var(--silver);
 }
-body.dark-mode button{
+body.light-mode button{
     transition: background-color .5s ease-in-out, color .5s ease-in-out, border .5s ease-in-out; 
     color: var(--resin-black);
     background-color: var(--ghost-white);
@@ -61,34 +52,59 @@ body.dark-mode button{
 body a {
     color: var(--ghost-white);
 }
-body.dark-mode a {
+body.light-mode a {
     color: var(--resin-black); 
     text-decoration: none; 
   }
-body.dark-mode a:hover {
+body.light-mode a:hover {
     color: var(--lighter-resin-black); 
 }
-body.dark-mode .about-button {
+body.light-mode .about-button {
     color: var(--lil-photo-blue);
     border: 2px solid var(--lil-photo-blue);
 }
-body.dark-mode #background__canvas {
+body.light-mode .about-button:hover {
+    transition: color .5s ease-in-out, border .5s ease-in-out;
+    color: var(--silver);
+    border: 2px solid var(--silver);
+}
+body.light-mode #background__canvas {
     transition: background-color .5s ease-in-out;
     background-color: var(--ghost-white);
 } 
-
-body.dark-mode .dev-name {
+body.light-mode .dev-name {
     transition: color .5s ease-in-out;
     color: var(--lil-photo-blue);
 }
-body.dark-mode .circle i{
-    transition: color .5s ease-in-out;
+body.light-mode .circle i{
+    transition: all .5s ease-in-out;
     color: var(--lil-photo-blue);
 }
-body.dark-mode .hamburger .bar {
+body.light-mode .hamburger .bar {
     transition: all .5s ease-in-out;
     background-color: var(--resin-black);
 }
+body.light-mode #my-image {
+    transition: border .5s ease-in-out;
+    border: 4px solid var(--resin-black);
+}
+body.light-mode .about-text {
+    transition: background-color .5s ease-in-out;
+    background-color: var(--ghost-white);
+}
+body.light-mode .language-text {
+    transition: color .5s ease-in-out;
+    color: var(--ghost-white);
+}
+body.light-mode .contact-card {
+    transition: background-color .5s ease-in-out;
+    background-color: var(--ghost-white);
+}
+body.light-mode .navlist{
+    transition: background-color .5s ease-in-out, transform 1s ease-in-out;
+    background-color: var(--ghost-white);
+}
+
 :root {
     --icon-size: 40px;
 
@@ -100,6 +116,7 @@ body.dark-mode .hamburger .bar {
     --silver: #cecece;
     --ghost-white: #e8e9f3;
     --darker-lighter: #3C3D37;
+    --darker-resin-black: #26262c;
 }
 ::selection {
     background: var(--silver);
@@ -113,7 +130,6 @@ body.dark-mode .hamburger .bar {
     width: 100%;
     height: 42px;
     display: flex;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 .navlist {
     list-style: none;
@@ -125,8 +141,9 @@ body.dark-mode .hamburger .bar {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--resin-black);
-    transition: background-color .5s ease-in-out;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    background-color: var(--darker-resin-black);
+    transition: background-color .5s ease-in-out, height .5s ease-in-out;
 }
 .navlist #name {
     height: 100%;
@@ -344,8 +361,10 @@ a:hover {
     text-align: justify;
 }
 .about-text {
-    margin: 0;
     font-size: 1.2rem;
+    background-color: var(--resin-black); 
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    padding: 20px;
 }
 .right-about-container {
     position: relative;
@@ -397,14 +416,14 @@ a:hover {
     color: var(--silver);
 }
 .lang-icon:hover {
-    color: var(--silver);
+    color: var(--lil-photo-blue);
 }
 .language-text {
     position: absolute;
     top: 60%;
     text-align: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease-in-out, color .5s ease-in-out;
     font-size: 16px;
 }
 .language-text.fade-in {
@@ -420,6 +439,7 @@ a:hover {
 #my-image {
     background-image: url("./images/my-picture.jpeg");
     border: 4px solid var(--ghost-white);
+    transition: border .5s ease-in-out;
     overflow: hidden;
 }
 #my-image, .right-about-container {
@@ -528,6 +548,9 @@ a:hover {
     width: 100%;
 }
 .contact-card {
+    transition: background-color .5s ease-in-out;
+    background-color: var(--resin-black);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
     height: 100%;
     width: 100%;
     min-width: 200px;
@@ -590,9 +613,9 @@ footer p {
         display: none;
     }
     .nav-icons {
-        width: auto; /* Set it to auto for proper scaling */
-        max-width: 100%; /* Prevent it from going over the screen width */
-        position: relative; /* Ensure stability */
+        width: auto;
+        max-width: 100%;
+        position: relative;
     }
     .nav-anchors {
         font-size: 14px;
@@ -629,11 +652,25 @@ footer p {
         display: none;
     }
     .navlist {
-        background: none;
+        top: 0px;
+        margin-top: 0px;
+        padding-top: 0px;
+        height: 0px;
+        transition: height 1s ease-in-out, background-color .5s ease-in-out;
+    }
+    .navlist.extended {
+        height: 450px;
+        transition: height 1s ease-in-out, background-color .5s ease-in-out;
+    }
+    body.light-mode .navlist {
+        transition: height 1s ease-in-out, background-color .5s ease-in-out;
+    }
+    body.light-mode .navlist.extended {
+        transition: height 1s ease-in-out, background-color .5s ease-in-out;
     }
     .nav-icons {
         opacity: 0;
-        transition: all 1s ease-in-out;
+        transition: transform 1s ease-in-out, opacity .5s ease-in-out;
         position: absolute;
         top: 450%;
         left: 0%;
@@ -643,7 +680,7 @@ footer p {
         flex-direction: row;
         justify-content: center;
         pointer-events: none;
-        transform: translateY(-100px);
+        transform: translateY(-200px);
     }
     .nav-icons.fade-in {
         opacity: 1;
@@ -652,7 +689,7 @@ footer p {
     }
     .nav-icons.fade-out {
         opacity: 0;
-        transition: all 1s ease-in-out;
+        transition: transform 1s ease-in-out, opacity .5s ease-in-out;
     }
     .nav-anchors {
         opacity: 0;
@@ -666,7 +703,7 @@ footer p {
         justify-content: center;
         pointer-events: none;
         gap: 2px;
-        transform: translateY(-100px);
+        transform: translateY(-200px);
         transition: opacity 1s ease, transform 1s ease-in-out;
     }
     .nav-anchors.fade-in {
@@ -683,12 +720,12 @@ footer p {
         opacity: 1;
         transform: translateY(0px);
         pointer-events: all;
-        transition: opacity 1s ease, transform 1s ease-in-out;
+        transition: opacity .5s ease, transform 1s ease-in-out;
     }
     .nav-anchors.fade-out-ham {
         opacity: 0;
         pointer-events: none;
-        transition: opacity 1s ease, transform 1s ease-in-out;
+        transition: opacity .5s ease, transform 1s ease-in-out;
     }
     .hamburger {
         display: flex;
@@ -703,7 +740,7 @@ footer p {
         transition: all 1.0s ease-in-out;
     }
     .home-spacer.extended {
-        height: 210px;
+        height: 110px;
     }
     .heading {
         margin-top: 0px;
@@ -756,7 +793,7 @@ footer p {
     }
     .about-text {
         font-size: 1rem;
-        margin: 20px;
+        margin-top: 20px;
     }
     .lang-icon {
         transform: rotate(var(--angle)) translate(0, calc(-250% - var(--icon-size) / 1)) rotate(calc(-1 * var(--angle)));
@@ -775,6 +812,10 @@ footer p {
     }
     .contact-spacer {
         height: 100px;
+    }
+    .contact-card {
+        width: 80%;
+        padding: 20px;
     }
      form {
         display: flex;

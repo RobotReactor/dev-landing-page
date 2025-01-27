@@ -8,6 +8,7 @@ document.getElementById('hamburger').addEventListener('click', function() {
     const navIcons = document.getElementById('nav-icons');
     const navAnchors = document.getElementById('nav-anchors');
     const homeSpacer = document.getElementById('home-spacer');
+    const navList = document.getElementById('navlist');
 
     // Toggle fade effect on nav-icons
     if (navIcons.classList.contains('fade-in')) {
@@ -28,6 +29,11 @@ document.getElementById('hamburger').addEventListener('click', function() {
         homeSpacer.classList.remove('extended');
     } else {
         homeSpacer.classList.add('extended');
+    }
+    if (navList.classList.contains('extended')) {
+        navList.classList.remove('extended');
+    } else {
+        navList.classList.add('extended');
     }
 });
 
@@ -133,17 +139,17 @@ function updateContentToEnglish() {
 document.getElementById('toggle-color-icon').addEventListener('click', toggleDarkMode);
 
 function toggleDarkMode() {
-    document.body.classList.toggle('dark-mode');
+    document.body.classList.toggle('light-mode');
 
     const darkModeIcon = document.querySelector('#toggle-color-icon i');
-    if (document.body.classList.contains('dark-mode')) {
+    if (document.body.classList.contains('light-mode')) {
         darkMode = true;
-        darkModeIcon.classList.remove('fa-sun');
-        darkModeIcon.classList.add('fa-moon');
-    } else {
-        darkMode = false;
         darkModeIcon.classList.remove('fa-moon');
         darkModeIcon.classList.add('fa-sun');
+    } else {
+        darkMode = false;
+        darkModeIcon.classList.remove('fa-sun');
+        darkModeIcon.classList.add('fa-moon');
     }
 }
 
