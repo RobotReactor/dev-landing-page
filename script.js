@@ -1,4 +1,4 @@
-let darkMode = false;
+let lightMode = false;
 
 document.getElementById('hamburger').addEventListener('click', function() {
     // Toggle hamburger menu active state
@@ -136,22 +136,50 @@ function updateContentToEnglish() {
     }, 300);
 }
 
-document.getElementById('toggle-color-icon').addEventListener('click', toggleDarkMode);
+document.getElementById('toggle-color-icon').addEventListener('click', togglelightMode);
 
-function toggleDarkMode() {
-    document.body.classList.toggle('light-mode');
-
-    const darkModeIcon = document.querySelector('#toggle-color-icon i');
-    if (document.body.classList.contains('light-mode')) {
-        darkMode = true;
-        darkModeIcon.classList.remove('fa-moon');
-        darkModeIcon.classList.add('fa-sun');
+function checkSystemTheme() {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme) {
+        lightMode = savedTheme === 'dark';
     } else {
-        darkMode = false;
-        darkModeIcon.classList.remove('fa-sun');
-        darkModeIcon.classList.add('fa-moon');
+        lightMode = prefersDark;
+    }
+
+    applyTheme();
+}
+
+function togglelightMode() {
+    lightMode = !lightMode;
+    localStorage.setItem('theme', lightMode ? 'dark' : 'light');
+    applyTheme();
+}
+
+function applyTheme() {
+    if (lightMode) {
+        document.body.classList.add('light-mode');
+        document.querySelector('#toggle-color-icon i').classList.remove('fa-moon');
+        document.querySelector('#toggle-color-icon i').classList.add('fa-sun');
+    } else {
+        document.body.classList.remove('light-mode');
+        document.querySelector('#toggle-color-icon i').classList.remove('fa-sun');
+        document.querySelector('#toggle-color-icon i').classList.add('fa-moon');
     }
 }
+
+// Run the check on page load
+window.onload = function () {
+    checkSystemTheme();
+    
+    // Rest of your window.onload logic
+    window.scrollTo(0, 0);
+    if (window.location.hash) {
+        window.location.hash = '';
+    }
+    adjustHeroHeight();
+};
 
 const icons = document.querySelectorAll('.right-about i');
 const languageText = document.querySelector('.language-text');
@@ -273,7 +301,7 @@ class Particle {
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-        ctx.fillStyle = darkMode ? 'rgb(51, 50, 59)' : 'rgb(232, 233, 243)';
+        ctx.fillStyle = lightMode ? 'rgb(51, 50, 59)' : 'rgb(232, 233, 243)';
         ctx.fill();
     }
     update() {
@@ -326,7 +354,7 @@ function init() {
         let directionX = (Math.random() * 1 - 0.5) * (innerWidth < 768 ? 0.3 : 0.5);
         let directionY = (Math.random() * 1 - 0.5) * (innerWidth < 768 ? 0.3 : 0.5);
 
-        let color = darkMode ? 'rgb(51, 50, 59)' : 'rgb(232, 233, 243)';
+        let color = lightMode ? 'rgb(51, 50, 59)' : 'rgb(232, 233, 243)';
 
         particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
     }
@@ -357,7 +385,7 @@ function connect() {
                            ((particlesArray[a].y - particlesArray[b].y) ** 2);
             if (distance < maxConnectionDistance ** 2) {
                 opacityValue = 1 - (distance / (maxConnectionDistance ** 2)); 
-                ctx.strokeStyle = darkMode ? `rgba(51, 50, 59, ${opacityValue})` : `rgba(232, 233, 243, ${opacityValue})` ;
+                ctx.strokeStyle = lightMode ? `rgba(51, 50, 59, ${opacityValue})` : `rgba(232, 233, 243, ${opacityValue})` ;
                 ctx.lineWidth = 1;
                 ctx.beginPath();
                 ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -398,7 +426,7 @@ function adjustParticleCount() {
             let directionX = (Math.random() * 1 - 0.5) * (innerWidth < 768 ? 0.3 : 0.5);
             let directionY = (Math.random() * 1 - 0.5) * (innerWidth < 768 ? 0.3 : 0.5);
 
-            let color = darkMode ? 'rgb(51, 50, 59)' : 'rgb(232, 233, 243)';
+            let color = lightMode ? 'rgb(51, 50, 59)' : 'rgb(232, 233, 243)';
             particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
         }
     } else if (particlesArray.length > adjustedDensity) {
