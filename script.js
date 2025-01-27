@@ -1,3 +1,5 @@
+let darkMode = false;
+
 document.getElementById('hamburger').addEventListener('click', function() {
     // Toggle hamburger menu active state
     this.classList.toggle('active');
@@ -41,7 +43,6 @@ window.addEventListener('resize', () => {
 });
 
 document.getElementById('language-icon').addEventListener('click', toggleLanguage);
-document.getElementById('toggle-color-icon').addEventListener('click', toggleDarkMode);
 
 let textTransitionInProgress = false;
 
@@ -90,7 +91,10 @@ function updateContentToSpanish() {
         document.querySelector('.heading__line-1').innerHTML = "Hola, soy <span class='dev-name'>Maxwell</span>.";
         document.querySelector('.heading__line-2').textContent = "Un desarrollador full stack.";
         document.querySelector('.button-text').textContent = "Comencemos";
-        document.querySelector('.about-text').textContent = "¡Hola, soy Maxwell Bourcier! Soy un desarrollador de software apasionado que disfruta convertir ideas en soluciones funcionales y elegantes. La programación no es solo una habilidad para mí, ¡es un viaje de aprendizaje y resolución de problemas sin fin! Desde la emoción de depurar hasta la alegría de crear algo desde cero, abrazo cada desafío como una oportunidad para crecer. Siempre estoy explorando nuevas tecnologías, mejorando mi oficio y manteniéndome curioso acerca de lo que sigue. Cuando no estoy programando o jugando al disc golf, me encontrarás ideando proyectos innovadores o tomando cursos en línea para expandir mis conocimientos. ¡Construyamos algo increíble juntos!";
+        document.querySelector('.about-text').innerHTML = `¡Hola, soy Maxwell Bourcier! Como un apasionado desarrollador Full Stack, me especializo en transformar ideas en soluciones funcionales y elegantes. Con un profundo amor por la programación y una insaciable curiosidad por el desarrollo de software, sobresalgo tanto en tecnologías de front-end como de back-end, asegurando experiencias de usuario sin interrupciones y un rendimiento robusto de las aplicaciones.<br><br>
+                                                        La programación no es solo una habilidad para mí, es un viaje continuo de aprendizaje, resolución de problemas e innovación. Desde desentrañar errores complejos hasta crear código eficiente y elegante desde cero, me encanta enfrentar desafíos de frente y ofrecer resultados excepcionales. Estoy bien versado en marcos modernos, herramientas y mejores prácticas, y siempre estoy dispuesto a explorar nuevas tecnologías para mantenerme a la vanguardia de la industria.<br><br>
+                                                        Más allá del teclado, me comprometo al crecimiento personal a través de cursos en línea, participación en la comunidad y proyectos colaborativos. Ya sea que estemos pensando en ideas innovadoras, optimizando soluciones existentes o explorando las últimas tendencias tecnológicas, me motiva la búsqueda de la excelencia en la programación de software.<br><br>
+                                                        Cuando no estoy programando, probablemente esté en el campo de disc golf, equilibrando mi pasión por la tecnología con un estilo de vida activo. Si buscas un desarrollador dedicado e innovador para dar vida a tu visión, ¡conectemos y creemos algo extraordinario juntos!`;
         document.querySelector('label[for="name"]').textContent = "Nombre:";
         document.querySelector('label[for="email"]').textContent = "Correo electrónico:";
         document.querySelector('label[for="message"]').textContent = "Mensaje:";
@@ -113,7 +117,10 @@ function updateContentToEnglish() {
         document.querySelector('.heading__line-1').innerHTML = "Hello, I'm <span class='dev-name'>Maxwell</span>.";
         document.querySelector('.heading__line-2').textContent = "A full stack developer.";
         document.querySelector('.button-text').textContent = "Let's get started";
-        document.querySelector('.about-text').textContent = "Hi, I'm Maxwell Bourcier! I'm a passionate software developer who thrives on turning ideas into functional, elegant solutions. Coding isn't just a skill for me; it's a journey of endless learning and problem-solving. From the thrill of debugging to the joy of creating something from scratch, I embrace every challenge as an opportunity to grow. I'm constantly exploring new technologies, improving my craft, and staying curious about what's next. When I'm not coding or playing disc golf, you'll find me brainstorming innovative projects or diving into online courses to expand my knowledge. Let's build something amazing together!";
+        document.querySelector('.about-text').innerHTML = `Hi, I'm Maxwell Bourcier! As a passionate Full Stack Web Developer, I specialize in transforming ideas into functional, elegant solutions. With a deep love for coding and an insatiable curiosity for software development, I excel in both front-end and back-end technologies, ensuring seamless user experiences and robust application performance.<br><br>
+                                                        Coding isn't just a skill for me—it's a continuous journey of learning, problem-solving, and innovation. From unraveling complex bugs to crafting sleek, efficient code from scratch, I thrive on tackling challenges head-on and delivering exceptional results. I'm well-versed in modern frameworks, tools, and best practices, and I'm always eager to explore new technologies to stay at the forefront of the industry.<br><br>
+                                                        Beyond the keyboard, I'm committed to personal growth through online courses, community engagement, and collaborative projects. Whether it's brainstorming groundbreaking ideas, optimizing existing solutions, or diving into cutting-edge tech trends, I'm driven by the pursuit of excellence in software programming.<br><br>
+                                                        When I'm not coding, I'm likely out on the disc golf course, balancing my passion for technology with an active lifestyle. If you're looking for a dedicated, innovative developer to bring your vision to life, let's connect and build something extraordinary together!`;
         document.querySelector('label[for="name"]').textContent = "Name:";
         document.querySelector('label[for="email"]').textContent = "Email:";
         document.querySelector('label[for="message"]').textContent = "Message:";
@@ -123,14 +130,18 @@ function updateContentToEnglish() {
     }, 300);
 }
 
+document.getElementById('toggle-color-icon').addEventListener('click', toggleDarkMode);
+
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
 
     const darkModeIcon = document.querySelector('#toggle-color-icon i');
     if (document.body.classList.contains('dark-mode')) {
+        darkMode = true;
         darkModeIcon.classList.remove('fa-sun');
         darkModeIcon.classList.add('fa-moon');
     } else {
+        darkMode = false;
         darkModeIcon.classList.remove('fa-moon');
         darkModeIcon.classList.add('fa-sun');
     }
@@ -238,7 +249,7 @@ class Particle {
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-        ctx.fillStyle = 'rgb(232, 233, 243)';
+        ctx.fillStyle = darkMode ? 'rgb(51, 50, 59)' : 'rgb(232, 233, 243)';
         ctx.fill();
     }
     update() {
@@ -291,7 +302,7 @@ function init() {
         let directionX = (Math.random() * 1 - 0.5) * (innerWidth < 768 ? 0.3 : 0.5);
         let directionY = (Math.random() * 1 - 0.5) * (innerWidth < 768 ? 0.3 : 0.5);
 
-        let color = 'rgb(232, 233, 243)';
+        let color = darkMode ? 'rgb(51, 50, 59)' : 'rgb(232, 233, 243)';
 
         particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
     }
@@ -322,7 +333,7 @@ function connect() {
                            ((particlesArray[a].y - particlesArray[b].y) ** 2);
             if (distance < maxConnectionDistance ** 2) {
                 opacityValue = 1 - (distance / (maxConnectionDistance ** 2)); 
-                ctx.strokeStyle = `rgba(232, 233, 243, ${opacityValue})`;
+                ctx.strokeStyle = darkMode ? `rgba(51, 50, 59, ${opacityValue})` : `rgba(232, 233, 243, ${opacityValue})` ;
                 ctx.lineWidth = 1;
                 ctx.beginPath();
                 ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -340,7 +351,7 @@ window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
 
     resizeTimeout = setTimeout(() => {
-        mouse.radius = Math.min(100, Math.max(30, (canvas.height / 100) * (canvas.width / 100))); // Recalculate radius
+        mouse.radius = Math.min(100, Math.max(30, (canvas.height / 100) * (canvas.width / 100))); 
 
         adjustParticleCount();
 
@@ -363,7 +374,7 @@ function adjustParticleCount() {
             let directionX = (Math.random() * 1 - 0.5) * (innerWidth < 768 ? 0.3 : 0.5);
             let directionY = (Math.random() * 1 - 0.5) * (innerWidth < 768 ? 0.3 : 0.5);
 
-            let color = 'rgb(232, 233, 243)';
+            let color = darkMode ? 'rgb(51, 50, 59)' : 'rgb(232, 233, 243)';
             particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
         }
     } else if (particlesArray.length > adjustedDensity) {

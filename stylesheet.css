@@ -8,23 +8,89 @@
     font-style: normal;
 }
 * {
-    /*border: solid; */
     box-sizing: border-box;
 }
 html {
     scroll-behavior: smooth;
 }
 html, body {
-    width: 100%;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
+    height: 100%;
+    width: 100%;
+}
+body {
+    font-family: 'wotfardregular', sans-serif !important;
+    color: var(--ghost-white); 
+    transition: color .5s ease-in-out;
+}
+body.dark-mode {
+    color: var(--resin-black);
+    transition: color .5s ease-in-out;
+}
+body.dark-mode ::selection {
+    background-color: var(--resin-black);
+    color: var(--silver);
+}
+body.dark-mode .navlist{
+    transition: background-color .5s ease-in-out;
+    background-color: var(--ghost-white);
+}
+body.dark-mode textarea {
+    transition: background-color .5s ease-in-out, color .5s ease-in-out, border .5s ease-in-out; 
+    border: 1px solid var(--resin-black);
+    background-color: var(--ghost-white);
+    color: var(--resin-black);
+}
+body.dark-mode input {
+    transition: background-color .5s ease-in-out, color .5s ease-in-out, border .5s ease-in-out; 
+    border: 1px solid var(--resin-black);
+    background-color: var(--ghost-white);
+    color: var(--resin-black);
+}
+body.dark-mode button:hover {
+    background-color: var(--silver);
+}
+body.dark-mode button{
+    transition: background-color .5s ease-in-out, color .5s ease-in-out, border .5s ease-in-out; 
+    color: var(--resin-black);
+    background-color: var(--ghost-white);
+    border: 2px solid var(--resin-black);
+}
+body a {
+    color: var(--ghost-white);
+}
+body.dark-mode a {
+    color: var(--resin-black); 
+    text-decoration: none; 
+  }
+body.dark-mode a:hover {
+    color: var(--lighter-resin-black); 
+}
+body.dark-mode .about-button {
+    color: var(--lil-photo-blue);
+    border: 2px solid var(--lil-photo-blue);
+}
+body.dark-mode #background__canvas {
+    transition: opacity .5s ease-in-out;
+    background-image: radial-gradient(var(--ghost-white), var(--ghost-white)); /* New gradient */
+    opacity: 1; 
+}
+body.dark-mode .dev-name {
+    color: var(--lil-photo-blue);
+}
+body.dark-mode .hamburger .bar {
+    transition: all .5s ease-in-out;
+    background-color: var(--resin-black);
 }
 :root {
     --icon-size: 40px;
+
     --resin-black: #272635;
     --lighter-resin-black: #4C5660;
     --non-photo-blue: #b1e5f2;
+    --lil-photo-blue: #2eb9dc;
     --french-gray: #a6a6a8;
     --silver: #cecece;
     --ghost-white: #e8e9f3;
@@ -42,9 +108,9 @@ html, body {
     width: 100%;
     height: 42px;
     display: flex;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 .navlist {
-    font-family: 'wotfardregular', sans-serif !important;
     list-style: none;
     align-self: center; 
     font-size: 20px;
@@ -55,6 +121,7 @@ html, body {
     align-items: center;
     justify-content: space-between;
     background-color: var(--resin-black);
+    transition: background-color .5s ease-in-out;
 }
 .navlist #name {
     height: 100%;
@@ -63,6 +130,7 @@ html, body {
 }
 .nav-anchors {
     height: 100%;
+    text-decoration: none;
     flex-direction: row;
     display: flex;
     align-items: center;
@@ -90,8 +158,10 @@ html, body {
     margin-right: 10px;
     gap: 10px;
 }
+.nav-icons a {
+    min-width: 23px;
+}
 .navlist a {
-    color: var(--ghost-white);
     text-decoration: none;
     display: flex;
     justify-content: space-between;
@@ -164,11 +234,11 @@ a:hover {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: radial-gradient(var(--lighter-resin-black), var(--resin-black));
+    transition: opacity .5s ease-in-out;
+    background-image: radial-gradient(var(--lighter-resin-black), var(--resin-black));
+    opacity: 1;
 }
 .home {
-    color: var(--ghost-white);
-    font-family: 'wotfardregular', sans-serif !important;
     display: flex;
     justify-content: center;
     height: 1300px;
@@ -213,7 +283,7 @@ a:hover {
     transition: color 0.3s ease-in-out;
     transition: border 0.3s ease-in-out;
 }
-.projects-button:hover {
+.about-button:hover {
     color: var(--silver);
     border: 2px solid var(--silver);
 }
@@ -222,8 +292,6 @@ a:hover {
     margin-left: 4px;
 }
 .about {
-    color: var(--ghost-white);
-    font-family: 'wotfardregular', sans-serif !important;
     font-size: 24px;
     height: 100%;
 }
@@ -379,8 +447,6 @@ a:hover {
     flex-grow: 1;
 }
 .projects {
-    color: var(--ghost-white);
-    font-family: 'wotfardregular', sans-serif !important;
     font-size: 18px;
     height: 3200px;
 }
@@ -429,8 +495,6 @@ a:hover {
     flex-grow: 2;
 }
 .contact {
-    color: var(--ghost-white);
-    font-family: 'wotfardregular', sans-serif !important;
     font-size: 24px;
     height: 1050px;
     display: flex;
@@ -487,13 +551,16 @@ textarea, input {
     background-color: var(--darker-lighter);
     resize: none;
     color: var(--ghost-white);
+    border: 1px solid var(--ghost-white);
     width: 100%;
+    transition: background-color .5s ease-in-out, color .5s ease-in-out, border .5s ease-in-out;
 }
 button {
     width: 80px;
     height: 60px;
     border-radius: 15%;
     margin-top: 30px;
+    transition: background-color .5s ease-in-out, color .5s ease-in-out;
     background-color: var(--darker-lighter);
     color: var(--ghost-white);
     border: 2px solid var(--ghost-white);
@@ -504,8 +571,6 @@ button:hover {
 }
 footer {
     display: flex;
-    font-family: 'wotfardregular', sans-serif !important;
-    color: var(--ghost-white);
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
@@ -552,6 +617,9 @@ footer p {
     }
 }
 @media (max-width: 600px) { 
+    .navbar {
+        box-shadow: none;
+    }
     .navbar #name {
         display: none;
     }
@@ -622,6 +690,7 @@ footer p {
         margin-top: 30px;
     }
     .hero {
+        padding-top: 120px;
         will-change: transform, top, left;
     }
     .home-spacer {
