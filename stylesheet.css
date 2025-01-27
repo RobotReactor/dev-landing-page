@@ -73,11 +73,16 @@ body.dark-mode .about-button {
     border: 2px solid var(--lil-photo-blue);
 }
 body.dark-mode #background__canvas {
-    transition: opacity .5s ease-in-out;
-    background-image: radial-gradient(var(--ghost-white), var(--ghost-white)); /* New gradient */
-    opacity: 1; 
-}
+    transition: background-color .5s ease-in-out;
+    background-color: var(--ghost-white);
+} 
+
 body.dark-mode .dev-name {
+    transition: color .5s ease-in-out;
+    color: var(--lil-photo-blue);
+}
+body.dark-mode .circle i{
+    transition: color .5s ease-in-out;
     color: var(--lil-photo-blue);
 }
 body.dark-mode .hamburger .bar {
@@ -234,9 +239,8 @@ a:hover {
     width: 100%;
     height: 100%;
     z-index: -1;
-    transition: opacity .5s ease-in-out;
-    background-image: radial-gradient(var(--lighter-resin-black), var(--resin-black));
-    opacity: 1;
+    transition: background-color .5s ease-in-out;
+    background-color: var(--resin-black);
 }
 .home {
     display: flex;
@@ -271,6 +275,7 @@ a:hover {
     font-size: 48px;
 }
 .dev-name {
+    transition: color .5s ease-in-out;
     color: var(--non-photo-blue);
 }
 .about-button {
@@ -370,7 +375,7 @@ a:hover {
     justify-content: center;
     align-items: center;
     transform-origin: 50% 50%;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, color .5s ease-in-out;
 }
 .lang-icon {
     position: absolute;
