@@ -243,6 +243,24 @@ window.addEventListener('mousemove',
     }
 );
 
+// Touch events for mobile
+window.addEventListener('touchstart', (event) => {
+    const touch = event.touches[0];
+    mouse.x = touch.clientX;
+    mouse.y = touch.clientY;
+});
+
+window.addEventListener('touchmove', (event) => {
+    const touch = event.touches[0];
+    mouse.x = touch.clientX;
+    mouse.y = touch.clientY;
+});
+
+window.addEventListener('touchend', () => {
+    mouse.x = null;
+    mouse.y = null;
+});
+
 class Particle {
     constructor(x, y,  directionX, directionY, size, color) {
         this.x = x;
