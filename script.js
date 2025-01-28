@@ -1,52 +1,85 @@
 let lightMode = false;
 
-document.getElementById('hamburger').addEventListener('click', function() {
-    // Toggle hamburger menu active state
-    this.classList.toggle('active');
+const navIcons = document.getElementById('nav-icons');
+const navAnchors = document.getElementById('nav-anchors');
+const homeSpacer = document.getElementById('home-spacer');
+const navList = document.getElementById('navlist');
+const hamburger = document.getElementById('hamburger');
+
+
+const isHamburgerVisible = () => {
+    const style = window.getComputedStyle(hamburger);
+    return style.opacity !== '0' && style.display !== 'none';
+};
+
+const closeMenuOnClickOutside = (e) => {
+    console.log("closeMenuClickOutside");
+    if (!e.target.closest('.navlist') 
+        && !e.target.closest('#hamburger') 
+            && isHamburgerVisible() ) {
+        closeMenu();
+    }
+};
+
+const openMenu = () => {
+    console.log("Open!");
+
+    hamburger.classList.add('active');
+
+    navIcons.classList.remove('fade-out');
+    navIcons.classList.add('fade-in');
+
+    navAnchors.classList.add('fade-in-ham');
+    navAnchors.classList.remove('fade-out-ham');
+
+    homeSpacer.classList.add('extended');
     
-    // Get the nav-icons element
-    const navIcons = document.getElementById('nav-icons');
-    const navAnchors = document.getElementById('nav-anchors');
-    const homeSpacer = document.getElementById('home-spacer');
-    const navList = document.getElementById('navlist');
+    navList.classList.remove('collapsed');
+    navList.classList.add('extended');
 
-    // Toggle fade effect on nav-icons
-    if (navIcons.classList.contains('fade-in')) {
-        navIcons.classList.remove('fade-in');
-        navIcons.classList.add('fade-out');
+    document.addEventListener('click', closeMenuOnClickOutside);
+    document.addEventListener('touchend', closeMenuOnClickOutside);
+};
+
+const closeMenu = () => {
+    console.log("Close!");
+
+    hamburger.classList.remove('active');
+
+    navIcons.classList.remove('fade-in');
+    navIcons.classList.add('fade-out');
+
+    navAnchors.classList.remove('fade-in-ham');
+    navAnchors.classList.add('fade-out-ham');
+
+    homeSpacer.classList.remove('extended');
+
+    navList.classList.remove('extended');
+    navList.classList.add('collapsed');
+
+    // Remove the outside click listener
+    document.removeEventListener('click', closeMenuOnClickOutside);
+    document.removeEventListener('touchend', closeMenuOnClickOutside);
+};
+
+hamburger.addEventListener('click', function() {
+    if(!this.classList.contains('active')) {
+        openMenu();
     } else {
-        navIcons.classList.remove('fade-out');
-        navIcons.classList.add('fade-in');
+        closeMenu();
     }
-    if (navAnchors.classList.contains('fade-in-ham')) {
-        navAnchors.classList.remove('fade-in-ham');
-        navAnchors.classList.add('fade-out-ham');
-    } else {
-        navAnchors.classList.remove('fade-out-ham');
-        navAnchors.classList.add('fade-in-ham');
-    }
-    if (homeSpacer.classList.contains('extended')) {
-        homeSpacer.classList.remove('extended');
-    } else {
-        homeSpacer.classList.add('extended');
-    }
-    if (navList.classList.contains('extended')) {
+});
+
+const disableAnimationOnResize = () => {
+    if (window.innerWidth <= 600) {
+        // Remove animation classes when resizing to 600px or below
         navList.classList.remove('extended');
-    } else {
-        navList.classList.add('extended');
+        navIcons.classList.remove('fade-in', 'fade-out');
+        navAnchors.classList.remove('fade-in-ham', 'fade-out-ham');
     }
-});
+};
 
-window.addEventListener('resize', () => {
-    if (window.innerWidth > 600) {
-        navIcons.classList.add('fade-in'); 
-        navAnchors.classList.add('fade-in'); 
-        navAnchors.style.pointerEvents = 'auto';
-    } else {
-        navIcons.style.pointerEvents = 'none';
-        navAnchors.style.pointerEvents = 'none';
-    }
-});
+window.addEventListener('resize', disableAnimationOnResize);
 
 document.getElementById('language-icon').addEventListener('click', toggleLanguage);
 

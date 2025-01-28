@@ -143,7 +143,7 @@ body.light-mode .navlist{
     justify-content: space-between;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
     background-color: var(--darker-resin-black);
-    transition: background-color .5s ease-in-out, height .5s ease-in-out;
+    /* transition: background-color .5s ease-in-out, height .5s ease-in-out; */
 }
 .navlist #name {
     height: 100%;
@@ -209,6 +209,7 @@ a:hover {
     justify-content: space-between;
     margin-right: 25px;
     margin-top: 25px;
+    opacity: 0;
 }
 .hamburger .bar {
     height: 2px;
@@ -362,7 +363,7 @@ a:hover {
 }
 .about-text {
     font-size: 1.2rem;
-    transition: all .5s ease-in-out;
+    transition: background-color .5s ease-in-out;
     background-color: var(--resin-black); 
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
     padding: 20px;
@@ -657,6 +658,9 @@ footer p {
         margin-top: 0px;
         padding-top: 0px;
         height: 0px;
+    }
+    .navlist.collapsed {
+        height: 0px;
         transition: height 1s ease-in-out, background-color .5s ease-in-out;
     }
     .navlist.extended {
@@ -671,7 +675,7 @@ footer p {
     }
     .nav-icons {
         opacity: 0;
-        transition: transform 1s ease-in-out, opacity .5s ease-in-out;
+        /* transition: transform 1s ease-in-out, opacity .5s ease-in-out; */
         position: absolute;
         top: 450%;
         left: 0%;
@@ -687,6 +691,7 @@ footer p {
         opacity: 1;
         pointer-events: all;
         transform: translateY(0px);
+        transition: transform 1s ease-in-out, opacity .5s ease-in-out;
     }
     .nav-icons.fade-out {
         opacity: 0;
@@ -705,7 +710,7 @@ footer p {
         pointer-events: none;
         gap: 2px;
         transform: translateY(-200px);
-        transition: opacity 1s ease, transform 1s ease-in-out;
+        /* transition: opacity 1s ease, transform 1s ease-in-out; */
     }
     .nav-anchors.fade-in {
         opacity: 1;
@@ -731,6 +736,7 @@ footer p {
     .hamburger {
         display: flex;
         margin-top: 60px;
+        opacity: 1;
     }
     .hero {
         padding-top: 120px;
@@ -835,6 +841,8 @@ footer p {
     }
     .hamburger {
         display: none;
+        opacity: 0;
+        pointer-events: none;
     }
     #linkedin-icon {
         margin-left: 40px;
