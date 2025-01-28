@@ -20,6 +20,14 @@ html, body {
     font-family: 'wotfardregular', sans-serif !important;
     color: var(--ghost-white); 
 }
+body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+}
 body.light-mode {
     color: var(--resin-black);
     transition: color .5s ease-in-out;
@@ -638,6 +646,9 @@ footer p {
     }
     .nav-anchors {
         font-size: 14px;
+    }
+    .home-spacer {
+        height: 30px;
     }
     .heading {
         margin-top: 24dvh;

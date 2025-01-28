@@ -261,7 +261,7 @@ let resizeTimeout;
 let mouse = {
     x: null,
     y: null,
-    radius: Math.min(100, Math.max(30, (canvas.height / 100) * (canvas.width / 100))),
+    radius: Math.min(100, Math.max(80, (canvas.height / 100) * (canvas.width / 100))),
 };
 
 window.addEventListener('mousemove',
