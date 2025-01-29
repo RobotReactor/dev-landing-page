@@ -994,6 +994,11 @@ footer p {
         flex-direction: column;
         font-size: 1rem;
     }
+    .demo-video {
+        padding-left: 0px;
+        padding-top: 30px;
+        padding-bottom: 10px;
+    }
     .tab-button {
         width: var(--button-width-mobile);
     }
