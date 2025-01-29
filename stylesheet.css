@@ -574,7 +574,8 @@ a:hover {
     display: block;
 }
 .demo-video {
-    padding-left: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
     width: 300px;
     height: 300px;
 }
@@ -584,6 +585,7 @@ a:hover {
     justify-content: center;
     align-items: center;
     width: 100%;
+    padding-top: 30px;
 }
 .projects {
     font-size: 18px;
@@ -995,9 +997,9 @@ footer p {
         font-size: 1rem;
     }
     .demo-video {
-        padding-left: 0px;
-        padding-top: 30px;
-        padding-bottom: 10px;
+        margin-left: 0px;
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
     .tab-button {
         width: var(--button-width-mobile);
