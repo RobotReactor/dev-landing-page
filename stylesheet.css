@@ -63,7 +63,7 @@ body a {
 body.light-mode a {
     color: var(--resin-black); 
     text-decoration: none; 
-  }
+}
 body.light-mode a:hover {
     color: var(--lighter-resin-black); 
 }
