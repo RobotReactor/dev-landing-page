@@ -1,5 +1,41 @@
 let lightMode = false;
 
+function checkSystemTheme() {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme) {
+        lightMode = savedTheme === 'light';
+    } else {
+        lightMode = !prefersDark;
+    }
+
+    applyTheme();
+}
+
+function toggleLightMode() {
+    lightMode = !lightMode;
+    localStorage.setItem('theme', lightMode ? 'light' : 'dark');
+    applyTheme();
+}
+
+function applyTheme() {
+    if (lightMode) {
+        document.body.classList.add('light-mode');
+        document.querySelector('#toggle-color-icon i').classList.remove('fa-moon');
+        document.querySelector('#toggle-color-icon i').classList.add('fa-sun');
+    } else {
+        document.body.classList.remove('light-mode');
+        document.querySelector('#toggle-color-icon i').classList.remove('fa-sun');
+        document.querySelector('#toggle-color-icon i').classList.add('fa-moon');
+    }
+}
+
+document.querySelector('#toggle-color-icon i').addEventListener('click', toggleLightMode);
+
+// Run the check on page load
+window.addEventListener('DOMContentLoaded', checkSystemTheme);
+
 const navIcons = document.getElementById('nav-icons');
 const navAnchors = document.getElementById('nav-anchors');
 const homeSpacer = document.getElementById('home-spacer');
@@ -207,51 +243,6 @@ function updateContentToEnglish() {
         document.querySelector('.footer-legal-2').textContent = "Trademarked name and logo are the property of MvxCoding, Inc.";
     }, 300);
 }
-
-document.getElementById('toggle-color-icon').addEventListener('click', togglelightMode);
-
-function checkSystemTheme() {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const savedTheme = localStorage.getItem('theme');
-    
-    if (savedTheme) {
-        lightMode = savedTheme === 'dark';
-    } else {
-        lightMode = prefersDark;
-    }
-
-    applyTheme();
-}
-
-function togglelightMode() {
-    lightMode = !lightMode;
-    localStorage.setItem('theme', lightMode ? 'dark' : 'light');
-    applyTheme();
-}
-
-function applyTheme() {
-    if (lightMode) {
-        document.body.classList.add('light-mode');
-        document.querySelector('#toggle-color-icon i').classList.remove('fa-moon');
-        document.querySelector('#toggle-color-icon i').classList.add('fa-sun');
-    } else {
-        document.body.classList.remove('light-mode');
-        document.querySelector('#toggle-color-icon i').classList.remove('fa-sun');
-        document.querySelector('#toggle-color-icon i').classList.add('fa-moon');
-    }
-}
-
-// Run the check on page load
-window.onload = function () {
-    checkSystemTheme();
-    
-    // Rest of your window.onload logic
-    window.scrollTo(0, 0);
-    if (window.location.hash) {
-        window.location.hash = '';
-    }
-    adjustHeroHeight();
-};
 
 const icons = document.querySelectorAll('.right-about i');
 const languageText = document.querySelector('.language-text');
