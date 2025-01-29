@@ -486,6 +486,7 @@ a:hover {
 .crop-image {
     background: #eee no-repeat center;
     background-size: cover;
+    overflow: hidden;
 }
 #my-image {
     background-image: url("./images/my-picture.jpeg");
@@ -512,6 +513,7 @@ a:hover {
     transition: background-color 0.5s, opacity 0.5s;
     opacity: 0;
     z-index: 1;
+    overflow: hidden;
 }
 .image-tint.tint-on{
     opacity: 1;
