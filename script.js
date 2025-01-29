@@ -73,6 +73,7 @@ hamburger.addEventListener('click', function() {
 const disableAnimationOnResize = () => {
     if (window.innerWidth <= 600) {
         // Remove animation classes when resizing to 600px or below
+        hamburger.classList.remove('active');
         navList.classList.remove('extended');
         navIcons.classList.remove('fade-in', 'fade-out');
         navAnchors.classList.remove('fade-in-ham', 'fade-out-ham');
@@ -116,6 +117,44 @@ function toggleLanguage() {
         }, 300);
     }, 700);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    const tabButtonsContainer = document.querySelector('.tab-buttons');
+
+    // Create the underline element
+    const underline = document.createElement('div');
+    underline.classList.add('underline');
+    tabButtonsContainer.appendChild(underline);
+
+
+    // Function to update the underline position
+    const updateUnderlinePosition = (activeButton) => {
+        const buttonRect = activeButton.getBoundingClientRect();
+        const containerRect = tabButtonsContainer.getBoundingClientRect();
+
+        underline.style.width = `${buttonRect.width}px`;
+        underline.style.left = `${buttonRect.left - containerRect.left}px`;
+    };
+
+    // Add event listeners to buttons
+    tabButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons and panels
+            tabButtons.forEach((btn) => btn.classList.remove('active'));
+            tabPanels.forEach((panel) => panel.classList.remove('active'));
+
+            // Add active class to clicked button and corresponding panel
+            button.classList.add('active');
+            const tabId = button.getAttribute('data-tab');
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+
+            // Update underline position
+            updateUnderlinePosition(button);
+        });
+    });
+});
 
 function updateContentToSpanish() {
     setTimeout(() => {
