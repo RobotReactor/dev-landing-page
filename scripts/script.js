@@ -393,10 +393,17 @@ function drawFireworkParticles(ctx2) {
     ctx2.globalAlpha = 1;
 }
 
+let isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+
+
 window.addEventListener('mousemove',
     function(event) {
         mouse.x = event.x;
         mouse.y = event.y;
+
+        if (!isTouchDevice) {
+            mouse.radius = Math.min(100, Math.max(80, (canvas.height / 100) * (canvas.width / 100))); // Use default radius on non-touch devices
+        }
     }
 );
 
