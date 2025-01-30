@@ -11,7 +11,6 @@
     box-sizing: border-box;
 }
 html, body {
-    overflow-x: hidden;
     margin: 0;
     padding: 0;
     height: 100%;
@@ -21,6 +20,7 @@ html, body {
     color: var(--ghost-white); 
 }
 body {
+    overflow-x: hidden;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
 }
@@ -987,7 +987,7 @@ footer p {
         height: 1400px;
     }
     .project-container {
-        height: 100%;
+        height: auto;
         width: 90%;
         padding: 10px;
         margin: 10px;
