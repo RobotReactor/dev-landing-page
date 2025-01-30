@@ -12,10 +12,10 @@
 }
 html, body {
     touch-action: pan-y;
-    top: 0;
-    left: 0;
-    margin: 0;
-    padding: 0;
+    top: 0px;
+    left: 0px;
+    margin: 0px;
+    padding: 0px;
     height: 100vh;
     width: 100vw;
     scroll-behavior: smooth;
@@ -30,7 +30,6 @@ body {
 
 body::-webkit-scrollbar {
     display: none; /* Chrome, Safari, and Opera */
-    overflow-x: hidden;
 }
 body.light-mode {
     color: var(--resin-black);
@@ -188,7 +187,6 @@ body.light-mode .project-icon:hover {
     justify-content: space-between;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
     background-color: var(--darker-resin-black);
-    /* transition: background-color .5s ease-in-out, height .5s ease-in-out; */
 }
 .navlist #name {
     height: 100%;
@@ -297,8 +295,8 @@ a:hover {
 }
 #background__canvas {
     position: fixed;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
     width: 100vw;
     height: 100vh;
     z-index: -1;
@@ -364,9 +362,8 @@ a:hover {
     margin-left: 4px;
 }
 .about {
-    overflow-x: hidden;
     font-size: 24px;
-    height: auto
+    height: 100%;
 }
 .about-me {
     font-size: 48px;
@@ -585,7 +582,6 @@ a:hover {
     width: 100%;
     height: auto;
 }
-
 .tab-panel {
     display: none;
     animation: fadeIn 0.5s ease-in-out;
@@ -833,9 +829,6 @@ footer p {
     }
 }
 @media (max-width: 600px) { 
-    * {
-        border: solid;
-    }
     .navbar {
         box-shadow: none;
     }
@@ -972,10 +965,12 @@ footer p {
     }
     .about-container {
         flex-direction: column;
-        padding-right: 0px;
+        padding: 0px;
     }
     .left-about {
         margin: 0px;
+        padding: 0px;
+        padding-top: 30px;
         gap: 0px;
     }
     #my-image, .right-about-container {
