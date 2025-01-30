@@ -347,7 +347,9 @@ let resizeTimeout;
 let mouse = {
     x: null,
     y: null,
-    radius: Math.min(100, Math.max(80, (canvas.height / 100) * (canvas.width / 100))),
+    radius: 0,
+    targetRadius: Math.min(100, Math.max(80, (canvas.height / 100) * (canvas.width / 100))),
+    touchActive: false
 };
 
 const fireworksParticles = [];
@@ -402,6 +404,17 @@ window.addEventListener('touchstart', (event) => {
     const touch = event.touches[0];
     mouse.x = touch.clientX;
     mouse.y = touch.clientY;
+    mouse.radius = 0;
+    mouse.touchActive = true;
+
+    let expand = () => {
+        if (mouse.radius < mouse.targetRadius && mouse.touchActive) {
+            mouse.radius += 4;
+            requestAnimationFrame(expand);
+        }
+    };
+    expand();
+
 });
 
 window.addEventListener('touchmove', (event) => {
@@ -411,8 +424,18 @@ window.addEventListener('touchmove', (event) => {
 });
 
 window.addEventListener('touchend', () => {
-    mouse.x = null;
-    mouse.y = null;
+    mouse.touchActive = false;
+
+    let shrink = () => {
+        if (!mouse.touchActive && mouse.radius > 0) {
+            mouse.radius -= 2;
+            requestAnimationFrame(shrink);
+        } else if (!mouse.touchActive) {
+            mouse.x = null;
+            mouse.y = null;
+        }
+    };
+    shrink();
 });
 
 class Particle {

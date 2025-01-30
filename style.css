@@ -73,8 +73,8 @@ body.light-mode .about-button {
 }
 body.light-mode .about-button:hover {
     transition: color .5s ease-in-out, border .5s ease-in-out;
-    color: var(--silver);
-    border: 2px solid var(--silver);
+    color: var(--non-photo-blue);
+    border: 2px solid var(--non-photo-blue);
 }
 body.light-mode #background__canvas {
     transition: background-color .5s ease-in-out;
@@ -344,12 +344,16 @@ a:hover {
     margin-top: 10px;
     padding: 6px;
     font-size: 20px;
-    transition: color 0.3s ease-in-out;
-    transition: border 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out, border 0.3s ease-in-out;
 }
 .about-button:hover {
     color: var(--silver);
     border: 2px solid var(--silver);
+}
+.button-text {
+    width: 150px; 
+    display: inline-block; /* Ensures the width applies */
+    text-align: center;
 }
 .down-arrow {
     align-self: center;
@@ -937,6 +941,9 @@ footer p {
      }
      .about-button {
         font-size: 12px !important;
+     }
+     .button-text {
+        width: 120px; 
      }
     .contact-spacer, .about-spacer, .projects-spacer {
         padding-top: 10px;
