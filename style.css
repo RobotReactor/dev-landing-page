@@ -364,8 +364,9 @@ a:hover {
     margin-left: 4px;
 }
 .about {
+    overflow-x: hidden;
     font-size: 24px;
-    height: 100%;
+    height: auto
 }
 .about-me {
     font-size: 48px;
@@ -832,6 +833,9 @@ footer p {
     }
 }
 @media (max-width: 600px) { 
+    * {
+        border: solid;
+    }
     .navbar {
         box-shadow: none;
     }
