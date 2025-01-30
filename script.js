@@ -215,6 +215,10 @@ function updateContentToSpanish() {
         document.querySelector('p[id="send-button"]').textContent = "Enviar";
         document.querySelector('.footer-legal-1').textContent = "© 2025 MvxCoding. Todos los derechos reservados.";
         document.querySelector('.footer-legal-2').textContent = "El nombre y logo registrados son propiedad de MvxCoding, Inc.";
+        document.querySelector('p[id="tab-button-1"').textContent = "Jeugo";
+        document.querySelector('p[id="tab-button-2"').textContent = "Web";
+        document.querySelector('p[id="tab-button-3"').textContent = "Estilo de Vida";
+        document.querySelector('.project-text-1').innerHTML = "Slide Quest es un juego de rompecabezas para un solo jugador, diseñado con desafiantes mecánicas de deslizamiento que requieren que los jugadores piensen estratégicamente para completar cada nivel. <br><br>El juego utiliza un algoritmo para determinar los movimientos óptimos y generar rompecabezas desafiantes. Los jugadores navegan por una cuadrícula deslizándose sobre baldosas de hielo en direcciones específicas, con el objetivo de resolver el rompecabezas en la menor cantidad de movimientos posible. <br><br>Una característica clave de Slide Quest es su Editor de Niveles, que permite a los usuarios crear y personalizar sus propios rompecabezas, además de guardar fragmentos para generar niveles en futuras versiones. <br><br>Aunque aún está en desarrollo, los próximos pasos en la hoja de ruta incluyen la finalización de los sprites del juego y la implementación de mapas generados por algoritmos utilizando fragmentos creados por los usuarios."
     }, 300);
 }
 
@@ -241,6 +245,10 @@ function updateContentToEnglish() {
         document.querySelector('p[id="send-button"]').textContent = "Send";
         document.querySelector('.footer-legal-1').textContent = "© 2025 MvxCoding. All rights reserved.";
         document.querySelector('.footer-legal-2').textContent = "Trademarked name and logo are the property of MvxCoding, Inc.";
+        document.querySelector('p[id="tab-button-1"').textContent = "Game";
+        document.querySelector('p[id="tab-button-2"').textContent = "Web";
+        document.querySelector('p[id="tab-button-3"').textContent = "Lifestyle";
+        document.querySelector('.project-text-1').innerHTML = 'Slide Quest is a single-player puzzle game designed with challenging sliding mechanics that require players to think strategically to complete each level. <br><br>The game uses an algorithm to determine optimal moves and create challenging puzzles. Players navigate a grid by sliding along ice tiles in specific directions, aiming to solve the puzzle with the fewest moves possible. <br><br>A key feature of Slide Quest is its Level Editor, which allows users to create and customize their own puzzles and save snippets to generate levels in future builds. <br><br>Although a work in progress, completion of game sprites and algorithm generated maps using user created chunks are next up in the pipeline.';
     }, 300);
 }
 

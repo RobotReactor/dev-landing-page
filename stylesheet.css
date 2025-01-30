@@ -550,7 +550,14 @@ a:hover {
     width: var(--button-width);
     height: 70px;
     text-align: center;
-    transition: color 0.3s ease;
+    transition: background-color .5s ease-in-out, color .5s ease-in-out, transform 1s ease-in-out;
+
+}
+.tab-button.fade-in {
+    opacity: 1;
+}
+.tab-button.fade-out {
+    opacity: 0;
 }
 .tab-button:hover {
     color: var(--non-photo-blue);
@@ -567,8 +574,9 @@ a:hover {
 }
 .tab-content {
     width: 100%;
-    height: 500px;
+    height: auto;
 }
+
 .tab-panel {
     display: none;
     animation: fadeIn 0.5s ease-in-out;
@@ -627,6 +635,12 @@ a:hover {
     width: 100%;
     text-align: center;
 }
+.project-text-1 {
+    width: 100%; 
+    margin: 0px; 
+    padding: 0px; 
+    height: 100%;
+}
 .project-info {
     display: flex;
     flex-direction: row;
@@ -635,6 +649,7 @@ a:hover {
     padding: 10px;
     width: 100%;
 }
+
 .project-explained {
     display: flex;
     justify-content: center;
@@ -782,9 +797,6 @@ footer p {
     .project-name {
         font-size: 1.1rem;
     }
-    .tab-content {
-        height: auto;
-    }
     .tab-panel {
         height: auto;
     }
@@ -796,7 +808,6 @@ footer p {
         font-size: 1rem;
     }
     .project-container {
-        height: 100%;
         width: 90%;
         padding: 10px;
         margin: 10px;
