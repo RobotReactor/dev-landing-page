@@ -362,20 +362,24 @@ a:hover {
     margin-left: 4px;
 }
 .about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-size: 24px;
-    height: 100%;
+    height: auto;
+    width: 100%;
 }
 .about-me {
+    text-align: center;
     font-size: 48px;
     padding-top: 40px;
-    padding-bottom: 40px;
-    display: flex;
+    padding-bottom: 130px;
     justify-content: center;
 }
 .about-spacer {
-    padding-top: 200px;
-    display: flex;
-    justify-content: center;
+    width: 200px;
+    height: 220px;
 }
 .about-container {
     display: flex;
@@ -429,9 +433,12 @@ a:hover {
     flex-grow: 1;
     justify-content: center;
     align-items: center;
-    min-width: 500px;
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    top: 10%; 
+    left: 50%;
+    width: 380px; 
+    height: 380px;
+    transform: translate(-50%, -50%);
   }
   .right-about {
     position: relative;
@@ -499,15 +506,13 @@ a:hover {
     border: 4px solid var(--ghost-white);
     transition: border .5s ease-in-out;
     overflow: hidden;
-}
-#my-image, .right-about-container {
-    position: absolute; 
+    position: absolute;
     top: 10%; 
     left: 50%;
-    transform: translate(-50%, -50%);
     width: 380px; 
     height: 380px;
-    border-radius: 50%; 
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
 }
 .image-tint {
     position: absolute;
@@ -557,7 +562,6 @@ a:hover {
     height: 70px;
     text-align: center;
     transition: background-color .5s ease-in-out, color .5s ease-in-out, transform 1s ease-in-out;
-
 }
 .tab-button.fade-in {
     opacity: 1;
@@ -789,6 +793,7 @@ footer p {
         margin-top: 24dvh;
     }
     .about-container {
+        height: auto;
         flex-direction: column;
         padding-right: 0px;
     }
@@ -829,6 +834,9 @@ footer p {
     }
 }
 @media (max-width: 600px) { 
+    /* {
+        outline: 1px solid red;
+    */
     .navbar {
         box-shadow: none;
     }
@@ -957,8 +965,9 @@ footer p {
         height: 225px;
         aspect-ratio: 1 / 1;
     }
+
     .about-me {
-        margin-top: -30px;
+        width: 200px;
     }
     .about-spacer {
         height: 140px;
