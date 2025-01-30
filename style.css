@@ -11,6 +11,7 @@
     box-sizing: border-box;
 }
 html, body {
+    touch-action: pan-y;
     margin: 0;
     padding: 0;
     height: 100%;
@@ -1068,6 +1069,15 @@ footer p {
         position: absolute;
         right: 0px;
         z-index: 1000;
+    }
+    canvas {
+        overflow-x: hidden;
+        display: block;
+        width: 100vw;
+        height: 100vh;
+    }
+    .navbar {
+        overflow-x: hidden;
     }
 }
 @media (min-width: 601px) {
