@@ -927,6 +927,9 @@ footer p {
         margin-top: 60px;
         opacity: 1;
     }
+    .home {
+        height: 100vh;
+    }
     .hero {
         padding-top: 120px;
         will-change: transform, top, left;
@@ -965,7 +968,6 @@ footer p {
         height: 225px;
         aspect-ratio: 1 / 1;
     }
-
     .about-me {
         width: 200px;
     }
