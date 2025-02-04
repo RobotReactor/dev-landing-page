@@ -350,7 +350,7 @@ a:hover {
     text-decoration: none;
     margin-top: 10px;
     padding: 6px;
-    font-size: 20px;
+    font-size: 1rem;
     transition: color 0.3s ease-in-out, border 0.3s ease-in-out;
 }
 .about-button:hover {
@@ -358,13 +358,14 @@ a:hover {
     border: 2px solid var(--silver);
 }
 .button-text {
-    width: 150px; 
-    display: inline-block; /* Ensures the width applies */
+    width: clamp(160px, 100px, 200px);
+    display: inline-block;
     text-align: center;
 }
-.down-arrow {
+.plane-icon {
     align-self: center;
     margin-left: 4px;
+    font-size: 1rem;
 }
 .about {
     display: flex;
@@ -819,6 +820,12 @@ footer p {
     .heading {
         margin-top: 24dvh;
     }
+    .heading__line-1 {
+        font-size: 2.4rem;
+    }
+    .heading__line-2 {
+        font-size: 2.0rem;
+    }
     .about-container {
         height: auto;
         flex-direction: column;
@@ -993,7 +1000,7 @@ footer p {
         font-size: 20px !important; 
      }
      .about-button {
-        font-size: 12px !important;
+        font-size: .8rem !important;
      }
      .button-text {
         width: 120px; 
@@ -1018,6 +1025,7 @@ footer p {
     .about-container {
         flex-direction: column;
         padding: 0px;
+        margin: 0px;
     }
     .left-about {
         margin: 0px;
