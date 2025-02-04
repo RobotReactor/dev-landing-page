@@ -337,11 +337,7 @@ const canvas = document.getElementById('background__canvas');
 const ctx = canvas.getContext('2d');
 
 const fireworksCanvas = document.getElementById('fireworks__canvas');
-const ctx2 = canvas.getContext('2d');
-
-fireworksCanvas.style.position = 'absolute';
-fireworksCanvas.style.zIndex = 5000;
-fireworksCanvas.style.pointerEvents = 'none';
+const ctx2 = fireworksCanvas.getContext('2d');
 
 fireworksCanvas.width = window.innerWidth;
 fireworksCanvas.height = window.innerHeight;
@@ -402,7 +398,6 @@ function drawFireworkParticles(ctx2) {
 }
 
 let isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
-
 
 window.addEventListener('mousemove',
     function(event) {
@@ -527,6 +522,7 @@ function init() {
 function animate() {
     requestAnimationFrame(animate);
     ctx.clearRect(0, 0, innerWidth, innerHeight);
+    ctx2.clearRect(0, 0, innerWidth, innerHeight);
 
     for(let i = 0; i < particlesArray.length; i++) {
         particlesArray[i].update();
@@ -566,6 +562,9 @@ function connect() {
 window.addEventListener('resize', () => {
     canvas.width = innerWidth;
     canvas.height = innerHeight;
+    fireworksCanvas.width = innerWidth;
+    fireworksCanvas.height = innerHeight;
+    
 
     clearTimeout(resizeTimeout);
 
