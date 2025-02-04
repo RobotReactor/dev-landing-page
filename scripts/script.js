@@ -1,5 +1,13 @@
 let lightMode = false;
 
+document.getElementById("resume-download").addEventListener("click", () => {
+    gtag("event", "resume_download", {
+        event_category: "engagement",
+        event_label: "Resume Download Button",
+        value: 1
+    });
+});
+
 function checkSystemTheme() {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const savedTheme = localStorage.getItem('theme');
