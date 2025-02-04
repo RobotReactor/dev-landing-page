@@ -1076,12 +1076,14 @@ footer p {
     }
     #video-1 {
         margin-top: 20px;
-        margin-left: 20px;
-        width: 300px;
-        height: 300px;
+        margin-bottom: 20px;
+        margin-left: 0px;
+        padding-left: 0px;
+        width: 280px;
+        height: 280px;
     }
     #video-2 {
-        height: 220px;
+        height: 200px;
         padding-left: 0px;
         margin-top: 20px;
         padding-bottom: 30px;
@@ -1090,6 +1092,11 @@ footer p {
     #video-3 {
         width: 300px;
         height: 300px;
+    }
+    #project-explained-2, #project-explained-3 {
+        text-align: left;
+        text-wrap: nowrap;
+        font-size: .8rem;
     }
     .underline {
         width: var(--button-width-mobile);
